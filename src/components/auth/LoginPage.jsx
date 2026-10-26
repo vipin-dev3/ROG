@@ -46,13 +46,6 @@ export default function LoginPage() {
     }, 700);
   };
 
-  const handleQuickFill = () => {
-    playUiClick();
-    setUsername('Dracula');
-    setPassword('Game');
-    setError('');
-  };
-
   return (
     <div className="min-h-screen bg-[#07070a] text-white flex flex-col justify-center items-center px-4 py-8 relative overflow-hidden select-none">
       {/* Background Cyber Mesh, Scanline & Ambient ROG Glow */}
@@ -99,21 +92,6 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Quick Credential Helper Chip */}
-        <div className="mb-5 p-2.5 rounded-lg bg-[#151520] border border-[#262638] flex items-center justify-between text-xs font-mono">
-          <div className="text-gray-400">
-            <span className="text-gray-500">CREDENTIALS: </span>
-            <span className="text-white font-semibold">Dracula</span> / <span className="text-white font-semibold">Game</span>
-          </div>
-          <button
-            type="button"
-            onClick={handleQuickFill}
-            className="px-2 py-0.5 rounded bg-rog-red/20 hover:bg-rog-red/30 text-rog-red hover:text-white border border-rog-red/40 text-[10px] uppercase font-bold transition-colors"
-          >
-            Auto Fill
-          </button>
-        </div>
-
         {/* Error Alert Box */}
         {error && (
           <div className="mb-5 p-3 rounded-lg bg-rog-red/15 border border-rog-red text-rog-red flex items-center space-x-2 text-xs font-mono shadow-[0_0_15px_rgba(255,0,51,0.3)] animate-shake">
@@ -134,12 +112,9 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Username Input */}
           <div>
-            <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-              <span className="flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-rog-red" />
-                Security Identifier
-              </span>
-              <span className="text-[10px] text-gray-500 font-mono">ID: Dracula</span>
+            <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <User className="w-3.5 h-3.5 text-rog-red" />
+              <span>Security Identifier</span>
             </label>
             <div className="relative">
               <input
@@ -147,7 +122,7 @@ export default function LoginPage() {
                 required
                 value={username}
                 onChange={(e) => { setUsername(e.target.value); setError(''); }}
-                placeholder="Enter Username (Dracula)"
+                placeholder="Enter identifier..."
                 disabled={isLoading || isSuccess}
                 className="w-full bg-[#161622] border border-[#28283a] focus:border-rog-red focus:ring-1 focus:ring-rog-red text-sm text-white placeholder-gray-500 rounded-lg pl-3.5 pr-4 py-2.5 outline-none font-sans transition-all disabled:opacity-50"
               />
@@ -156,12 +131,9 @@ export default function LoginPage() {
 
           {/* Password Input */}
           <div>
-            <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-              <span className="flex items-center gap-1.5">
-                <Key className="w-3.5 h-3.5 text-rog-red" />
-                Security Passcode
-              </span>
-              <span className="text-[10px] text-gray-500 font-mono">Pass: Game</span>
+            <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+              <Key className="w-3.5 h-3.5 text-rog-red" />
+              <span>Security Passcode</span>
             </label>
             <div className="relative">
               <input
@@ -169,7 +141,7 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => { setPassword(e.target.value); setError(''); }}
-                placeholder="Enter Password (Game)"
+                placeholder="Enter passcode..."
                 disabled={isLoading || isSuccess}
                 className="w-full bg-[#161622] border border-[#28283a] focus:border-rog-red focus:ring-1 focus:ring-rog-red text-sm text-white placeholder-gray-500 rounded-lg pl-3.5 pr-10 py-2.5 outline-none font-mono transition-all disabled:opacity-50"
               />

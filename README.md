@@ -4,12 +4,8 @@ An ultra-immersive, futuristic gaming portfolio and library web application styl
 
 ---
 
-### 🔐 Security Terminal Access (Single Login)
-The application includes an authentic ROG Security Gateway login terminal:
-- **Security Identifier (Username):** `Dracula`
-- **Security Passcode (Password):** `Game`
-
-*(Includes quick auto-fill chip and persistent clearance session).*
+### 🔐 Security Terminal Access
+The application is protected by a single-user ROG Security Gateway login terminal with encrypted session persistence and biometric verification animations.
 
 ---
 
