@@ -369,6 +369,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 44,
     isFavorite: true,
     personalNotes: "The hidden mountain temple caverns with god rays look astonishing on the Nebula HDR display. Locked 120 FPS with DLSS Quality."
+  },
+  {
+    id: "game-fc3",
+    title: "Far Cry 3",
+    genre: "FPS / Action Adventure",
+    platform: "Ubisoft Connect",
+    hoursPlayed: 58.4,
+    lastPlayed: "Today",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Turbo",
+    coverImage: "./covers/far-cry-3.jpg",
+    bannerImage: "./covers/far-cry-3.jpg",
+    description: "Stranded on a lawless tropical island cut off from civilization, Jason Brody must adapt to the savage jungle to save his friends. Featuring the legendary pirate antagonist Vaas Montenegro.",
+    tags: ["Rook Islands", "Vaas Montenegro", "Open World", "Classic FPS", "Mastered"],
+    achievementsUnlocked: 44,
+    totalAchievements: 44,
+    isFavorite: true,
+    personalNotes: "Did I ever tell you the definition of insanity? Rook Islands look vibrant at 240Hz with locked maximum framerates."
   }
 ];
 
@@ -378,21 +398,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "12",
+    slotNumber: "13",
     sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "13",
+    slotNumber: "14",
     sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "14",
+    slotNumber: "15",
     sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
