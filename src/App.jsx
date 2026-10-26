@@ -14,7 +14,7 @@ import GameLaunchOverlay from './components/modals/GameLaunchOverlay';
 import ManualModeModal from './components/modals/ManualModeModal';
 
 function MainApp() {
-  const { isAuthenticated, activeTab, operatingMode, currentModeConfig, auraColor } = useRog();
+  const { isAuthenticated, activeTab, operatingMode, currentModeConfig, auraColor, theme } = useRog();
   const [isManualModalOpen, setIsManualModalOpen] = useState(false);
 
   // If user is not authenticated, display the ROG Security Terminal Login Gateway
@@ -22,20 +22,22 @@ function MainApp() {
     return <LoginPage />;
   }
 
+  const isLight = theme === 'light';
+
   return (
     <div 
-      className="min-h-screen bg-[#0a0a0c] text-white flex flex-col font-sans relative overflow-x-hidden"
+      className={`min-h-screen ${isLight ? 'bg-[#f0f2f7] text-[#0f172a]' : 'bg-[#0a0a0c] text-white'} flex flex-col font-sans relative overflow-x-hidden transition-colors duration-300`}
       style={{
         '--rog-accent': currentModeConfig.accentColor,
         '--rog-glow': currentModeConfig.glowColor
       }}
     >
       {/* Background Cyber Mesh & Dynamic Ambient Glow */}
-      <div className="fixed inset-0 bg-rog-mesh opacity-90 pointer-events-none z-0" />
+      <div className={`fixed inset-0 bg-rog-mesh ${isLight ? 'opacity-40' : 'opacity-90'} pointer-events-none z-0`} />
       
       {/* Dynamic Ambient Glow shifted by Operating Mode & Aura Sync */}
       <div 
-        className="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] blur-[140px] opacity-20 pointer-events-none transition-all duration-700 z-0"
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] blur-[140px] ${isLight ? 'opacity-10' : 'opacity-20'} pointer-events-none transition-all duration-700 z-0`}
         style={{
           backgroundColor: operatingMode === 'turbo' ? '#ff0033' : auraColor
         }}

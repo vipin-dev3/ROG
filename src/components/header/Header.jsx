@@ -12,7 +12,9 @@ import {
   Cpu,
   Layers,
   LogOut,
-  ShieldCheck
+  ShieldCheck,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import { playUiClick } from '../../utils/soundEffects';
@@ -27,7 +29,9 @@ export default function Header() {
     activeTab,
     setActiveTab,
     currentUser,
-    logout
+    logout,
+    theme,
+    toggleTheme
   } = useRog();
 
   const [currentTime, setCurrentTime] = useState('');
@@ -134,6 +138,22 @@ export default function Header() {
               <Volume2 className="w-3.5 h-3.5 text-rog-red" />
             ) : (
               <VolumeX className="w-3.5 h-3.5 text-gray-500" />
+            )}
+          </button>
+
+          {/* Theme Toggle (Cyber Dark / Moonlight White) */}
+          <button
+            onClick={() => {
+              playUiClick();
+              toggleTheme();
+            }}
+            title={theme === 'light' ? "Switch to Cyber Dark Mode" : "Switch to Moonlight White Mode"}
+            className="p-1.5 hover:text-white text-gray-400 transition-colors hover:bg-[#1a1a24] rounded"
+          >
+            {theme === 'light' ? (
+              <Moon className="w-3.5 h-3.5 text-indigo-400 hover:text-indigo-300" />
+            ) : (
+              <Sun className="w-3.5 h-3.5 text-amber-400 hover:text-amber-300" />
             )}
           </button>
 

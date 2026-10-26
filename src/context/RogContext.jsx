@@ -59,6 +59,32 @@ export function RogProvider({ children }) {
     setCurrentUser(null);
   };
 
+  // Theme State: 'dark' (Cyber Dark) | 'light' (Moonlight White)
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('rog_theme') || 'dark';
+  });
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  };
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    if (theme === 'light') {
+      root.classList.add('theme-light', 'light');
+      root.classList.remove('theme-dark', 'dark');
+      body.classList.add('theme-light', 'light');
+      body.classList.remove('theme-dark', 'dark');
+    } else {
+      root.classList.add('theme-dark', 'dark');
+      root.classList.remove('theme-light', 'light');
+      body.classList.add('theme-dark', 'dark');
+      body.classList.remove('theme-light', 'light');
+    }
+    localStorage.setItem('rog_theme', theme);
+  }, [theme]);
+
   // Navigation View
   const [activeTab, setActiveTab] = useState('home'); // 'home' | 'library' | 'telemetry' | 'aura' | 'settings'
 
@@ -374,7 +400,10 @@ export function RogProvider({ children }) {
         auraBrightness,
         setAuraBrightness,
         soundEnabled,
-        setSoundEnabled
+        setSoundEnabled,
+        theme,
+        setTheme,
+        toggleTheme
       }}
     >
       {children}

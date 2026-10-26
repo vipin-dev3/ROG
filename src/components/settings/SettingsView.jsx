@@ -17,7 +17,9 @@ import {
   Edit3,
   Save,
   X,
-  Laptop
+  Laptop,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import RogSlashes from '../common/RogSlashes';
@@ -35,7 +37,9 @@ export default function SettingsView() {
     resetSystemSpecs,
     currentUser,
     updateCurrentUser,
-    logout
+    logout,
+    theme,
+    setTheme
   } = useRog();
 
   const [notification, setNotification] = useState('');
@@ -176,6 +180,76 @@ export default function SettingsView() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Side: General Preferences & Security */}
         <div className="lg:col-span-6 space-y-5">
+          {/* Visual Theme Mode */}
+          <div className="bg-[#101016] border border-[#1e1e2c] rounded-2xl p-5 space-y-4">
+            <h3 className="text-sm font-bold font-sans tracking-wide text-white uppercase flex items-center space-x-2">
+              <Sun className="w-4 h-4 text-amber-400" />
+              <span>Armoury Visual Theme (Aura Scheme)</span>
+            </h3>
+
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  playUiClick();
+                  setTheme('dark');
+                  showToast('Switched to Cyber Dark Mode.');
+                }}
+                className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition-all ${
+                  theme === 'dark'
+                    ? 'bg-[#181824] border-rog-red shadow-[0_0_15px_rgba(255,0,51,0.35)]'
+                    : 'bg-[#14141d] border-[#222232] hover:border-gray-600'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
+                    <Moon className="w-3.5 h-3.5 text-indigo-400" />
+                    <span>Cyber Dark</span>
+                  </span>
+                  {theme === 'dark' && (
+                    <span className="w-2 h-2 rounded-full bg-rog-red animate-pulse" />
+                  )}
+                </div>
+                <p className="text-[11px] font-mono text-gray-400">
+                  Obsidian & ROG Crimson
+                </p>
+                <span className="mt-2 text-[9px] font-mono text-gray-500 uppercase tracking-widest">
+                  DEFAULT SCAR
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  playUiClick();
+                  setTheme('light');
+                  showToast('Switched to Moonlight White Mode.');
+                }}
+                className={`p-3.5 rounded-xl border text-left flex flex-col justify-between transition-all ${
+                  theme === 'light'
+                    ? 'bg-[#ffffff] border-rog-red shadow-[0_0_15px_rgba(255,0,51,0.35)] text-gray-900'
+                    : 'bg-[#14141d] border-[#222232] hover:border-gray-600'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`text-xs font-bold flex items-center gap-1.5 ${theme === 'light' ? 'text-gray-900' : 'text-white'}`}>
+                    <Sun className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Moonlight White</span>
+                  </span>
+                  {theme === 'light' && (
+                    <span className="w-2 h-2 rounded-full bg-rog-red animate-pulse" />
+                  )}
+                </div>
+                <p className={`text-[11px] font-mono ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                  Glacier White & Crimson
+                </p>
+                <span className="mt-2 text-[9px] font-mono text-rog-red uppercase tracking-widest font-bold">
+                  ZEPHYRUS EDITION
+                </span>
+              </button>
+            </div>
+          </div>
+
           {/* Audio Synthesizer */}
           <div className="bg-[#101016] border border-[#1e1e2c] rounded-2xl p-5 space-y-4">
             <h3 className="text-sm font-bold font-sans tracking-wide text-white uppercase flex items-center space-x-2">

@@ -120,3 +120,170 @@ body {
 .text-glow-cyan {
   text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
 }
+
+/* ==========================================================================
+   MOONLIGHT WHITE (LIGHT THEME) - ROG ZEPHYRUS EDITION
+   ========================================================================== */
+
+.theme-light,
+.theme-light body {
+  color-scheme: light !important;
+  background-color: #f1f3f9 !important;
+  color: #0f172a !important;
+}
+
+/* Light Theme Scrollbars */
+.theme-light ::-webkit-scrollbar-track {
+  background: #f1f3f9 !important;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+}
+.theme-light ::-webkit-scrollbar-thumb:hover {
+  background: #ff0033 !important;
+}
+
+/* Light Mesh Overlay */
+.theme-light .bg-rog-mesh {
+  background-color: #f1f3f9 !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 0, 51, 0.05) 0%, transparent 60%),
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px) !important;
+}
+
+/* Base Surfaces & Structural Backgrounds */
+.theme-light .bg-\[\#07070a\],
+.theme-light .bg-\[\#0a0a0c\],
+.theme-light .bg-\[\#0c0c10\]\/90,
+.theme-light .bg-\[\#0d0d12\],
+.theme-light header.bg-\[\#0a0a0c\],
+.theme-light aside.bg-\[\#0d0d12\] {
+  background-color: #ffffff !important;
+}
+
+/* High-Tech White Card Containers */
+.theme-light .bg-\[\#101016\],
+.theme-light .bg-\[\#101016\]\/95,
+.theme-light .bg-\[\#111118\],
+.theme-light .bg-\[\#121217\],
+.theme-light .bg-\[\#121218\],
+.theme-light .bg-\[\#13131c\],
+.theme-light .bg-\[\#14141d\],
+.theme-light .bg-\[\#14141f\],
+.theme-light .bg-\[\#151520\],
+.theme-light .bg-\[\#161622\],
+.theme-light .bg-\[\#161624\] {
+  background-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Recessed Inset Elements & Inner Sections */
+.theme-light .bg-\[\#171720\],
+.theme-light .bg-\[\#171722\],
+.theme-light .bg-\[\#171724\],
+.theme-light .bg-\[\#181822\],
+.theme-light .bg-\[\#181824\],
+.theme-light .bg-\[\#1a1a24\],
+.theme-light .bg-\[\#1a1a26\],
+.theme-light .bg-\[\#1a1a28\],
+.theme-light .bg-\[\#1b1b26\],
+.theme-light .bg-\[\#1b1b28\],
+.theme-light .bg-\[\#1c1c28\],
+.theme-light .bg-\[\#1e1e2a\],
+.theme-light .bg-\[\#1e1e2c\],
+.theme-light .bg-\[\#1e1e2d\],
+.theme-light .bg-\[\#20202e\],
+.theme-light .bg-\[\#202030\] {
+  background-color: #f8fafc !important;
+}
+
+/* Light Borders & Dividers */
+.theme-light .border-\[\#161620\],
+.theme-light .border-\[\#181822\],
+.theme-light .border-\[\#181824\],
+.theme-light .border-\[\#1a1a24\],
+.theme-light .border-\[\#1b1b26\],
+.theme-light .border-\[\#1c1c28\],
+.theme-light .border-\[\#1e1e28\],
+.theme-light .border-\[\#1e1e2c\],
+.theme-light .border-\[\#1f1f2a\],
+.theme-light .border-\[\#1f1f2e\],
+.theme-light .border-\[\#20202d\],
+.theme-light .border-\[\#20202e\],
+.theme-light .border-\[\#222230\],
+.theme-light .border-\[\#222232\],
+.theme-light .border-\[\#232330\],
+.theme-light .border-\[\#232334\],
+.theme-light .border-\[\#262638\],
+.theme-light .border-\[\#2a2a3c\],
+.theme-light .border-\[\#2b2b3c\],
+.theme-light .border-\[\#2b2b3e\],
+.theme-light .border-\[\#2b2b3f\],
+.theme-light .border-\[\#2c2c3e\],
+.theme-light .border-\[\#2e2e42\],
+.theme-light .border-\[\#303042\],
+.theme-light .border-\[\#303046\],
+.theme-light .border-\[\#3b3b55\],
+.theme-light .border-gray-800,
+.theme-light .border-gray-700 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Light Mode Typography Hierarchy */
+.theme-light .text-white {
+  color: #0f172a !important;
+}
+
+.theme-light .text-gray-200 {
+  color: #1e293b !important;
+}
+
+.theme-light .text-gray-300 {
+  color: #334155 !important;
+}
+
+.theme-light .text-gray-400 {
+  color: #64748b !important;
+}
+
+.theme-light .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+/* Exceptions: Preserve white text inside buttons and badges */
+.theme-light .bg-rog-red,
+.theme-light .bg-rog-red *,
+.theme-light [class*="bg-rog-red"] *,
+.theme-light button.bg-rog-red,
+.theme-light button.bg-rog-red * {
+  color: #ffffff !important;
+}
+
+/* Form Inputs & Selects in Light Mode */
+.theme-light input,
+.theme-light select,
+.theme-light textarea {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.theme-light input:focus,
+.theme-light select:focus,
+.theme-light textarea:focus {
+  border-color: #ff0033 !important;
+  box-shadow: 0 0 0 2px rgba(255, 0, 51, 0.15) !important;
+}
+
+.theme-light option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Modal Backdrops & Overlays */
+.theme-light .bg-black\/80,
+.theme-light .bg-black\/85,
+.theme-light .bg-black\/75 {
+  background-color: rgba(15, 23, 42, 0.7) !important;
+}
