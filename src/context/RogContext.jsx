@@ -27,13 +27,14 @@ export function RogProvider({ children }) {
 
   // Games State
   const [games, setGames] = useState(() => {
-    const saved = localStorage.getItem('rog_vault_games');
-    if (saved) {
-      try {
+    try {
+      localStorage.removeItem('rog_vault_games'); // clear legacy sample data
+      const saved = localStorage.getItem('rog_vault_games_v2');
+      if (saved) {
         return JSON.parse(saved);
-      } catch {
-        return INITIAL_GAMES;
       }
+    } catch {
+      return INITIAL_GAMES;
     }
     return INITIAL_GAMES;
   });
@@ -66,7 +67,7 @@ export function RogProvider({ children }) {
 
   // Persist Games
   useEffect(() => {
-    localStorage.setItem('rog_vault_games', JSON.stringify(games));
+    localStorage.setItem('rog_vault_games_v2', JSON.stringify(games));
   }, [games]);
 
   // Persist Operating Mode

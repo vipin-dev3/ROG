@@ -146,128 +146,11 @@ export const OPERATING_MODES = [
   }
 ];
 
-export const INITIAL_GAMES = [
-  {
-    id: "game-1",
-    title: "Cyberpunk 2077: Phantom Liberty",
-    genre: "Action RPG / Sci-Fi",
-    platform: "Steam",
-    hoursPlayed: 142.6,
-    lastPlayed: "2 hours ago",
-    status: "Playing",
-    rating: 5,
-    completionPercentage: 86,
-    profileMode: "Turbo",
-    coverImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
-    description: "High-octane spy-thriller RPG set in the deadly district of Dogtown. Ray Tracing Overdrive enabled at 4K with DLSS 3.5 Frame Generation.",
-    tags: ["Ray Tracing", "Cyberpunk", "HDR", "NVIDIA Reflex"],
-    achievementsUnlocked: 44,
-    totalAchievements: 48,
-    isFavorite: true,
-    personalNotes: "Running at steady 115 FPS on Turbo mode. Graphics settings on Overdrive Ray Tracing."
-  },
-  {
-    id: "game-2",
-    title: "Elden Ring: Shadow of the Erdtree",
-    genre: "Action RPG / Souls-like",
-    platform: "Steam",
-    hoursPlayed: 218.4,
-    lastPlayed: "Yesterday",
-    status: "Completed",
-    rating: 5,
-    completionPercentage: 100,
-    profileMode: "Performance",
-    coverImage: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=1600&q=80",
-    description: "Journey through the Realm of Shadow. Unravel dark secrets of the golden Erdtree with seamless widescreen support.",
-    tags: ["Souls-like", "Dark Fantasy", "Open World", "Mastered"],
-    achievementsUnlocked: 42,
-    totalAchievements: 42,
-    isFavorite: true,
-    personalNotes: "Consort Radahn defeated on NG+3! Flawless 60 FPS locked with Performance profile."
-  },
-  {
-    id: "game-3",
-    title: "Black Myth: Wukong",
-    genre: "Action / Mythology",
-    platform: "Steam",
-    hoursPlayed: 54.2,
-    lastPlayed: "3 days ago",
-    status: "Playing",
-    rating: 5,
-    completionPercentage: 62,
-    profileMode: "Turbo",
-    coverImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80",
-    description: "An action RPG rooted in Chinese mythology. Full Unreal Engine 5 Nanite and Lumen implementation with full path tracing.",
-    tags: ["Unreal Engine 5", "Path Tracing", "Mythology", "Hardcore"],
-    achievementsUnlocked: 24,
-    totalAchievements: 36,
-    isFavorite: true,
-    personalNotes: "Chapter 4 boss fights are staggering. DLSS Quality + Frame Gen keeps it butter smooth at 100+ FPS."
-  },
-  {
-    id: "game-4",
-    title: "Forza Horizon 5",
-    genre: "Racing / Open World",
-    platform: "Xbox Game Pass",
-    hoursPlayed: 98.1,
-    lastPlayed: "5 days ago",
-    status: "Playing",
-    rating: 4,
-    completionPercentage: 74,
-    profileMode: "Performance",
-    coverImage: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1600&q=80",
-    description: "Explore the vibrant and ever-evolving open world landscapes of Mexico with limitless, fun driving action in hundreds of the world's greatest cars.",
-    tags: ["Racing", "Photorealistic", "Sim-Cade", "Ultrawide"],
-    achievementsUnlocked: 68,
-    totalAchievements: 85,
-    isFavorite: false,
-    personalNotes: "Nebula HDR Mini-LED display makes Mexico sunrises look jaw-dropping."
-  },
-  {
-    id: "game-5",
-    title: "DOOM Eternal: The Ancient Gods",
-    genre: "FPS / Fast Paced",
-    platform: "Steam",
-    hoursPlayed: 88.0,
-    lastPlayed: "1 week ago",
-    status: "Completed",
-    rating: 5,
-    completionPercentage: 100,
-    profileMode: "Turbo",
-    coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80",
-    description: "Hell's armies have invaded Earth. Become the Slayer in an epic single-player campaign to conquer demons across dimensions.",
-    tags: ["High FPS", "Vulkan", "Speedrun", "Metal OST"],
-    achievementsUnlocked: 33,
-    totalAchievements: 33,
-    isFavorite: false,
-    personalNotes: "240Hz screen refresh rate makes weapon switching and meat-hook traversal effortless."
-  },
-  {
-    id: "game-6",
-    title: "Baldur's Gate 3",
-    genre: "Turn-Based RPG",
-    platform: "GOG",
-    hoursPlayed: 185.3,
-    lastPlayed: "2 weeks ago",
-    status: "Playing",
-    rating: 5,
-    completionPercentage: 80,
-    profileMode: "Silent",
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
-    bannerImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80",
-    description: "Gather your party and return to the Forgotten Realms in a tale of fellowship and betrayal, sacrifice and survival, and the lure of absolute power.",
-    tags: ["Turn-Based", "DnD", "Rich Story", "Co-op"],
-    achievementsUnlocked: 39,
-    totalAchievements: 54,
-    isFavorite: true,
-    personalNotes: "Act 3 in the Lower City. Silent mode keeps the laptop whisper quiet during long tactical dialog sequences."
-  }
-];
+/**
+ * INITIAL GAMES REPOSITORY
+ * Cleaned and ready for your personalized game collection!
+ */
+export const INITIAL_GAMES = [];
 
 /**
  * Empty / Blank placeholder slots ready for future game entries.
@@ -276,24 +159,38 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "07",
-    sectorCode: "SECTOR-GAMMA // UNALLOCATED",
+    slotNumber: "01",
+    sectorCode: "SECTOR-ALPHA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "08",
-    sectorCode: "SECTOR-DELTA // STANDBY",
+    slotNumber: "02",
+    sectorCode: "SECTOR-BETA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "09",
-    sectorCode: "SECTOR-EPSILON // RESERVED",
+    slotNumber: "03",
+    sectorCode: "SECTOR-GAMMA // READY",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
+  },
+  {
+    id: "placeholder-slot-4",
+    slotNumber: "04",
+    sectorCode: "SECTOR-DELTA // RESERVED",
+    titlePrompt: "Unassigned Sector",
+    description: "Awaiting custom user game metadata."
+  },
+  {
+    id: "placeholder-slot-5",
+    slotNumber: "05",
+    sectorCode: "SECTOR-EPSILON // VACANT",
+    titlePrompt: "Vacant Slot",
+    description: "Ready for game installation."
   }
 ];
 
@@ -350,14 +247,14 @@ export const AURA_EFFECTS = [
 
 export const GENRES = [
   "All",
-  "Action RPG / Sci-Fi",
-  "Action RPG / Souls-like",
-  "Action / Mythology",
+  "Action RPG",
+  "Action / Adventure",
+  "FPS / Shooter",
   "Racing / Open World",
-  "FPS / Fast Paced",
-  "Turn-Based RPG",
+  "Souls-like",
+  "Strategy / Simulation",
+  "Sports / Fighting",
   "Survival Horror",
-  "Sim / Strategy",
   "Indie"
 ];
 
@@ -366,9 +263,10 @@ export const PLATFORMS = [
   "Steam",
   "Epic Games",
   "Xbox Game Pass",
+  "PlayStation PC",
   "GOG",
   "Battle.net",
   "EA App",
+  "Ubisoft Connect",
   "Custom Executable"
 ];
-
