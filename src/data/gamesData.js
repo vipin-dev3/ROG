@@ -269,6 +269,46 @@ export const INITIAL_GAMES = [
     totalAchievements: 32,
     isFavorite: false,
     personalNotes: "Intense Pacific War breakthrough combat with zero thermal throttling on Turbo profile."
+  },
+  {
+    id: "game-bf6",
+    title: "Battlefield 6",
+    genre: "FPS / Shooter",
+    platform: "EA App",
+    hoursPlayed: 48.0,
+    lastPlayed: "Yesterday",
+    status: "Playing",
+    rating: 5,
+    completionPercentage: 65,
+    profileMode: "Turbo",
+    coverImage: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=1600&q=80",
+    description: "Next-generation modern military all-out warfare. Unprecedented destruction physics, 128-player battles, and full Frostbite Next path tracing.",
+    tags: ["Next-Gen FPS", "128 Players", "Path Tracing", "Destruction"],
+    achievementsUnlocked: 18,
+    totalAchievements: 36,
+    isFavorite: true,
+    personalNotes: "Running with DLSS 3.5 Frame Generation at over 140 FPS on Turbo mode. Breakthrough mode scale is insane."
+  },
+  {
+    id: "game-fh6",
+    title: "Forza Horizon 6",
+    genre: "Racing / Open World",
+    platform: "Xbox Game Pass",
+    hoursPlayed: 62.5,
+    lastPlayed: "Today",
+    status: "Playing",
+    rating: 5,
+    completionPercentage: 78,
+    profileMode: "Performance",
+    coverImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80",
+    description: "The ultimate Horizon automotive festival. Explore breathtaking dynamic seasons, hundreds of real hypercars, and photorealistic ray-traced audio and visuals.",
+    tags: ["Racing", "Open World", "Photorealistic", "Nebula HDR"],
+    achievementsUnlocked: 44,
+    totalAchievements: 65,
+    isFavorite: true,
+    personalNotes: "Jaw-dropping visual fidelity on the 240Hz Nebula HDR display. Ray Traced reflections in cockpit cam look sensational."
   }
 ];
 
@@ -278,21 +318,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "07",
+    slotNumber: "09",
     sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "08",
+    slotNumber: "10",
     sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "09",
+    slotNumber: "11",
     sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
