@@ -349,6 +349,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 77,
     isFavorite: true,
     personalNotes: "Cruising down Vinewood Boulevard at twilight. Ultra graphics and ray tracing shadows run locked at 144+ FPS on Turbo profile."
+  },
+  {
+    id: "game-uncharted",
+    title: "Uncharted: Legacy of Thieves",
+    genre: "Action / Adventure",
+    platform: "PlayStation PC",
+    hoursPlayed: 48.6,
+    lastPlayed: "Today",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Performance",
+    coverImage: "./covers/uncharted.jpg",
+    bannerImage: "./covers/uncharted.jpg",
+    description: "Seek your fortune and leave your mark across the globe as Nathan Drake and Chloe Frazer. Explore lost pirate colonies and ancient Indian temples with high-framerate PC enhancements.",
+    tags: ["PlayStation PC", "Nathan Drake", "Treasure Hunter", "Cinematic", "Mastered"],
+    achievementsUnlocked: 44,
+    totalAchievements: 44,
+    isFavorite: true,
+    personalNotes: "The hidden mountain temple caverns with god rays look astonishing on the Nebula HDR display. Locked 120 FPS with DLSS Quality."
   }
 ];
 
@@ -358,21 +378,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "11",
+    slotNumber: "12",
     sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "12",
+    slotNumber: "13",
     sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "13",
+    slotNumber: "14",
     sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
