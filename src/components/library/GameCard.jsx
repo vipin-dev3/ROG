@@ -18,7 +18,8 @@ export default function GameCard({ game }) {
     setSelectedGameForModal, 
     setActiveLaunchingGame, 
     toggleFavorite, 
-    logHours 
+    logHours,
+    openGameModal 
   } = useRog();
 
   const handleLaunch = (e) => {
@@ -37,6 +38,16 @@ export default function GameCard({ game }) {
     e.stopPropagation();
     playUiClick();
     logHours(game.id, 1);
+  };
+
+  const handleEditClick = (e) => {
+    e.stopPropagation();
+    playUiClick();
+    if (openGameModal) {
+      openGameModal(game, true);
+    } else {
+      setSelectedGameForModal(game);
+    }
   };
 
   const handleCardClick = () => {
@@ -92,6 +103,14 @@ export default function GameCard({ game }) {
               />
             </button>
 
+            <button
+              onClick={handleEditClick}
+              title="Edit Game Information"
+              className="p-1.5 rounded-full bg-black/70 hover:bg-rog-red backdrop-blur text-gray-300 hover:text-white transition-colors"
+            >
+              <Edit2 className="w-3 h-3" />
+            </button>
+
             <span className={`px-2 py-0.5 rounded text-[10px] font-mono border backdrop-blur-md ${statusColors[game.status] || 'border-gray-600 text-gray-300'}`}>
               {game.status}
             </span>
@@ -99,15 +118,23 @@ export default function GameCard({ game }) {
         </div>
 
         {/* Floating Launch Button Hover Overlay */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-3 z-20">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center gap-2.5 z-20">
           <button
             onClick={handleLaunch}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-rog-red hover:bg-[#ff1a47] text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,0,51,0.8)] transition-transform active:scale-95"
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-rog-red hover:bg-[#ff1a47] text-white text-xs font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(255,0,51,0.8)] transition-transform active:scale-95"
           >
             <Play className="w-4 h-4 fill-white" />
             <span>Launch</span>
           </button>
           
+          <button
+            onClick={handleEditClick}
+            title="Edit Game Info"
+            className="p-2.5 rounded-lg bg-[#1c1c28] hover:bg-rog-red text-gray-200 hover:text-white border border-gray-700 hover:border-transparent transition-colors"
+          >
+            <Edit2 className="w-4 h-4" />
+          </button>
+
           <button
             onClick={handleQuickLog}
             title="Log +1 Hour Played"

@@ -133,8 +133,8 @@ export default function LaptopView() {
           </h2>
           
           <div className="mt-1 space-y-0.5 text-xs text-gray-400 font-mono">
-            <p className="truncate max-w-[340px]">{systemSpecs.cpu.model}</p>
-            <p className="truncate max-w-[340px] text-gray-400">{systemSpecs.gpu.model}</p>
+            <p className="truncate max-w-[340px]">{systemSpecs?.cpu?.model || 'Intel Core i9 Processor'}</p>
+            <p className="truncate max-w-[340px] text-gray-400">{systemSpecs?.gpu?.model || 'NVIDIA GeForce RTX GPU'}</p>
           </div>
 
           {/* System Settings Button */}

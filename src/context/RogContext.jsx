@@ -18,8 +18,18 @@ export function RogProvider({ children }) {
   });
 
   const [currentUser, setCurrentUser] = useState(() => {
+    const alias = localStorage.getItem('rog_user_alias');
+    if (alias) return alias;
     return (localStorage.getItem('rog_auth_token') || sessionStorage.getItem('rog_auth_token')) ? 'Dracula' : null;
   });
+
+  const updateCurrentUser = (newAlias) => {
+    if (newAlias && newAlias.trim()) {
+      const alias = newAlias.trim();
+      setCurrentUser(alias);
+      localStorage.setItem('rog_user_alias', alias);
+    }
+  };
 
   const login = (username, password, rememberMe = true) => {
     const trimmedUser = (username || '').trim();
@@ -102,7 +112,13 @@ export function RogProvider({ children }) {
   // Modals & Active Game
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedGameForModal, setSelectedGameForModal] = useState(null);
+  const [isEditingGameModal, setIsEditingGameModal] = useState(false);
   const [activeLaunchingGame, setActiveLaunchingGame] = useState(null);
+
+  const openGameModal = (game, editMode = false) => {
+    setSelectedGameForModal(game);
+    setIsEditingGameModal(editMode);
+  };
 
   // Peripherals
   const [devices, setDevices] = useState(CONNECTED_DEVICES);
@@ -136,6 +152,38 @@ export function RogProvider({ children }) {
 
   // Live Simulated Hardware Telemetry matching current operating mode
   const currentModeConfig = OPERATING_MODES.find(m => m.id === operatingMode) || OPERATING_MODES[0];
+
+  // System Specs state (User customizable & Persisted)
+  const [systemSpecs, setSystemSpecs] = useState(() => {
+    try {
+      const saved = localStorage.getItem('rog_system_specs');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      return ROG_SYSTEM_SPECS;
+    }
+    return ROG_SYSTEM_SPECS;
+  });
+
+  const updateSystemSpecs = (newSpecs) => {
+    setSystemSpecs(prev => {
+      const updated = {
+        ...prev,
+        ...newSpecs,
+        cpu: { ...prev.cpu, ...(newSpecs.cpu || {}) },
+        gpu: { ...prev.gpu, ...(newSpecs.gpu || {}) },
+        memory: { ...prev.memory, ...(newSpecs.memory || {}) },
+        storage: { ...prev.storage, ...(newSpecs.storage || {}) },
+        display: { ...prev.display, ...(newSpecs.display || {}) }
+      };
+      localStorage.setItem('rog_system_specs', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const resetSystemSpecs = () => {
+    localStorage.removeItem('rog_system_specs');
+    setSystemSpecs(ROG_SYSTEM_SPECS);
+  };
 
   const [telemetry, setTelemetry] = useState({
     cpuClock: currentModeConfig.cpuClockMhz,
@@ -252,10 +300,24 @@ export function RogProvider({ children }) {
     }));
   };
 
+  const importLibrary = (newGames) => {
+    if (Array.isArray(newGames)) {
+      setGames(newGames);
+      localStorage.setItem('rog_vault_games_v17', JSON.stringify(newGames));
+      return true;
+    }
+    return false;
+  };
+
   const resetDefaults = () => {
     setGames(INITIAL_GAMES);
     setOperatingModeState('windows');
-    localStorage.removeItem('rog_vault_games');
+    localStorage.removeItem('rog_vault_games_v17');
+    localStorage.removeItem('rog_operating_mode');
+    localStorage.removeItem('rog_system_specs');
+    localStorage.removeItem('rog_user_alias');
+    setSystemSpecs(ROG_SYSTEM_SPECS);
+    setCurrentUser('Dracula');
   };
 
   return (
@@ -263,6 +325,7 @@ export function RogProvider({ children }) {
       value={{
         isAuthenticated,
         currentUser,
+        updateCurrentUser,
         login,
         logout,
         activeTab,
@@ -271,7 +334,9 @@ export function RogProvider({ children }) {
         setOperatingMode,
         currentModeConfig,
         telemetry,
-        systemSpecs: ROG_SYSTEM_SPECS,
+        systemSpecs,
+        updateSystemSpecs,
+        resetSystemSpecs,
         operatingModes: OPERATING_MODES,
         games,
         addGame,
@@ -279,6 +344,7 @@ export function RogProvider({ children }) {
         deleteGame,
         toggleFavorite,
         logHours,
+        importLibrary,
         resetDefaults,
         searchQuery,
         setSearchQuery,
@@ -294,6 +360,9 @@ export function RogProvider({ children }) {
         setIsAddModalOpen,
         selectedGameForModal,
         setSelectedGameForModal,
+        isEditingGameModal,
+        setIsEditingGameModal,
+        openGameModal,
         activeLaunchingGame,
         setActiveLaunchingGame,
         devices,
