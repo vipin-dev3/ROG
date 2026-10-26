@@ -10,7 +10,9 @@ import {
   Sparkles,
   Activity,
   Cpu,
-  Layers
+  Layers,
+  LogOut,
+  ShieldCheck
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import { playUiClick } from '../../utils/soundEffects';
@@ -23,7 +25,9 @@ export default function Header() {
     soundEnabled, 
     setSoundEnabled,
     activeTab,
-    setActiveTab
+    setActiveTab,
+    currentUser,
+    logout
   } = useRog();
 
   const [currentTime, setCurrentTime] = useState('');
@@ -141,6 +145,24 @@ export default function Header() {
           >
             <Smartphone className="w-3.5 h-3.5 text-gray-300" />
           </button>
+
+          {/* User Clearance & Logout */}
+          <div className="flex items-center space-x-1.5 px-2 py-0.5 rounded bg-[#161622] border border-[#232334] ml-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
+            <span className="font-mono text-gray-300 text-[10px] font-bold tracking-wider">
+              {currentUser || 'DRACULA'}
+            </span>
+            <button
+              onClick={() => {
+                playUiClick();
+                logout();
+              }}
+              title="Logout (Return to Security Gateway)"
+              className="p-0.5 hover:text-rog-red text-gray-400 hover:bg-[#20202e] rounded transition-colors ml-0.5"
+            >
+              <LogOut className="w-3 h-3" />
+            </button>
+          </div>
 
           <div className="w-[1px] h-3.5 bg-gray-800 mx-1" />
 

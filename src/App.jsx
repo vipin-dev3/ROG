@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RogProvider, useRog } from './context/RogContext';
+import LoginPage from './components/auth/LoginPage';
 import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
 import DashboardView from './components/dashboard/DashboardView';
@@ -13,8 +14,13 @@ import GameLaunchOverlay from './components/modals/GameLaunchOverlay';
 import ManualModeModal from './components/modals/ManualModeModal';
 
 function MainApp() {
-  const { activeTab, operatingMode, currentModeConfig, auraColor } = useRog();
+  const { isAuthenticated, activeTab, operatingMode, currentModeConfig, auraColor } = useRog();
   const [isManualModalOpen, setIsManualModalOpen] = useState(false);
+
+  // If user is not authenticated, display the ROG Security Terminal Login Gateway
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
 
   return (
     <div 

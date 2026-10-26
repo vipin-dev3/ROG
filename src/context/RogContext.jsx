@@ -11,6 +11,44 @@ import { playModeSwitchSound, setMuted as setAudioMuted } from '../utils/soundEf
 const RogContext = createContext();
 
 export function RogProvider({ children }) {
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('rog_auth_token') === 'dracula_authorized' ||
+           sessionStorage.getItem('rog_auth_token') === 'dracula_authorized';
+  });
+
+  const [currentUser, setCurrentUser] = useState(() => {
+    return (localStorage.getItem('rog_auth_token') || sessionStorage.getItem('rog_auth_token')) ? 'Dracula' : null;
+  });
+
+  const login = (username, password, rememberMe = true) => {
+    const trimmedUser = (username || '').trim();
+    const trimmedPass = (password || '').trim();
+
+    if (trimmedUser === 'Dracula' && trimmedPass === 'Game') {
+      setIsAuthenticated(true);
+      setCurrentUser('Dracula');
+      if (rememberMe) {
+        localStorage.setItem('rog_auth_token', 'dracula_authorized');
+      } else {
+        sessionStorage.setItem('rog_auth_token', 'dracula_authorized');
+      }
+      return { success: true };
+    }
+
+    return { 
+      success: false, 
+      error: 'ACCESS REJECTED // INVALID CLEARANCE CREDENTIALS' 
+    };
+  };
+
+  const logout = () => {
+    localStorage.removeItem('rog_auth_token');
+    sessionStorage.removeItem('rog_auth_token');
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+  };
+
   // Navigation View
   const [activeTab, setActiveTab] = useState('home'); // 'home' | 'library' | 'telemetry' | 'aura' | 'settings'
 
@@ -219,6 +257,10 @@ export function RogProvider({ children }) {
   return (
     <RogContext.Provider
       value={{
+        isAuthenticated,
+        currentUser,
+        login,
+        logout,
         activeTab,
         setActiveTab,
         operatingMode,

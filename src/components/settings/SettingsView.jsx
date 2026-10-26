@@ -10,7 +10,9 @@ import {
   Cpu, 
   HardDrive, 
   Check, 
-  Info 
+  Info,
+  LogOut,
+  UserCheck
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import RogSlashes from '../common/RogSlashes';
@@ -22,7 +24,9 @@ export default function SettingsView() {
     setSoundEnabled, 
     games, 
     resetDefaults, 
-    systemSpecs 
+    systemSpecs,
+    currentUser,
+    logout
   } = useRog();
 
   const [notification, setNotification] = useState('');
@@ -124,6 +128,40 @@ export default function SettingsView() {
                 }`}
               >
                 {soundEnabled ? 'ENABLED' : 'MUTED'}
+              </button>
+            </div>
+          </div>
+
+          {/* Security Clearance & Session Management */}
+          <div className="bg-[#101016] border border-[#1e1e2c] rounded-2xl p-5 space-y-4">
+            <h3 className="text-sm font-bold font-sans tracking-wide text-white uppercase flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Security Clearance & Session</span>
+            </h3>
+
+            <div className="flex items-center justify-between p-3 rounded-xl bg-[#14141d] border border-[#222232]">
+              <div>
+                <p className="text-xs font-bold text-gray-200 flex items-center gap-2">
+                  <UserCheck className="w-4 h-4 text-emerald-400" />
+                  <span>COMMANDER {currentUser?.toUpperCase() || 'DRACULA'}</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                    LEVEL 5 ACCESS
+                  </span>
+                </p>
+                <p className="text-[11px] font-mono text-gray-400 mt-0.5">
+                  Authenticated via Single-User Armoury Gateway
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  playUiClick();
+                  logout();
+                }}
+                className="px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold bg-[#1e1e2a] hover:bg-rog-red text-gray-300 hover:text-white border border-[#2b2b3c] hover:border-transparent flex items-center space-x-1.5 transition-colors"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Logout</span>
               </button>
             </div>
           </div>

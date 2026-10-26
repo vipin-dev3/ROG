@@ -4,6 +4,15 @@ An ultra-immersive, futuristic gaming portfolio and library web application styl
 
 ---
 
+### 🔐 Security Terminal Access (Single Login)
+The application includes an authentic ROG Security Gateway login terminal:
+- **Security Identifier (Username):** `Dracula`
+- **Security Passcode (Password):** `Game`
+
+*(Includes quick auto-fill chip and persistent clearance session).*
+
+---
+
 ## 🎮 Key Features & Armoury Crate Aesthetic
 
 ### 1. 1:1 Armoury Crate Home Dashboard Homage
