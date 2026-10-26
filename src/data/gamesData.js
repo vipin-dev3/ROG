@@ -147,50 +147,155 @@ export const OPERATING_MODES = [
 ];
 
 /**
- * INITIAL GAMES REPOSITORY
- * Cleaned and ready for your personalized game collection!
+ * USER'S PLAYED GAMES COLLECTION
  */
-export const INITIAL_GAMES = [];
+export const INITIAL_GAMES = [
+  {
+    id: "game-gow",
+    title: "God of War",
+    genre: "Action / Adventure",
+    platform: "PlayStation PC",
+    hoursPlayed: 54.2,
+    lastPlayed: "Yesterday",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Turbo",
+    coverImage: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=1600&q=80",
+    description: "Venture into the brutal Norse realm of Midgard as Kratos alongside Atreus. Unlocked 4K graphics with DLSS and ultra-widescreen support.",
+    tags: ["PlayStation PC", "Norse Mythology", "Action RPG", "Mastered"],
+    achievementsUnlocked: 37,
+    totalAchievements: 37,
+    isFavorite: true,
+    personalNotes: "Valkyrie Queen Sigrun defeated on Give Me God of War! Runs locked at 120 FPS on Turbo mode."
+  },
+  {
+    id: "game-rdr2",
+    title: "Red Dead Redemption 2",
+    genre: "Action RPG / Open World",
+    platform: "Steam",
+    hoursPlayed: 168.4,
+    lastPlayed: "3 days ago",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Performance",
+    coverImage: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1600&q=80",
+    description: "America, 1899. Arthur Morgan and the Van der Linde gang are outlaws on the run. Unrivaled photorealistic open world with Vulkan API.",
+    tags: ["Open World", "Vulkan", "Masterpiece", "Story Rich"],
+    achievementsUnlocked: 48,
+    totalAchievements: 52,
+    isFavorite: true,
+    personalNotes: "One of the greatest stories ever told. Stunning visual fidelity on the ROG Nebula HDR display."
+  },
+  {
+    id: "game-acodyssey",
+    title: "Assassin's Creed Odyssey",
+    genre: "Action RPG",
+    platform: "Ubisoft Connect",
+    hoursPlayed: 114.6,
+    lastPlayed: "5 days ago",
+    status: "Playing",
+    rating: 5,
+    completionPercentage: 84,
+    profileMode: "Turbo",
+    coverImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80",
+    description: "Write your own epic odyssey and become a legendary Spartan hero in Ancient Greece. Vast naval combat and mythical beast encounters.",
+    tags: ["Ancient Greece", "Open World", "RPG", "Naval Combat"],
+    achievementsUnlocked: 49,
+    totalAchievements: 60,
+    isFavorite: true,
+    personalNotes: "Exploring the Aegean Sea and Athens. Flawless 95+ FPS on Ultra High graphics settings."
+  },
+  {
+    id: "game-cod",
+    title: "Call of Duty",
+    genre: "FPS / Shooter",
+    platform: "Battle.net",
+    hoursPlayed: 142.0,
+    lastPlayed: "Today",
+    status: "Playing",
+    rating: 5,
+    completionPercentage: 76,
+    profileMode: "Turbo",
+    coverImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1600&q=80",
+    description: "Visceral, high-stakes tactical campaign and multiplayer combat. Powered by NVIDIA Reflex ultra-low latency and DLSS 3.",
+    tags: ["Tactical FPS", "Ray Tracing", "NVIDIA Reflex", "Multiplayer"],
+    achievementsUnlocked: 28,
+    totalAchievements: 35,
+    isFavorite: false,
+    personalNotes: "High-octane search & destroy and Warzone matches. 240Hz refresh rate gives extreme competitive response."
+  },
+  {
+    id: "game-bf4",
+    title: "Battlefield 4",
+    genre: "FPS / Shooter",
+    platform: "EA App",
+    hoursPlayed: 186.5,
+    lastPlayed: "1 week ago",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Performance",
+    coverImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1600&q=80",
+    description: "The genre-defining action blockbuster made from moments that blur the line between game and glory. Dynamic Levolution destruction.",
+    tags: ["Levolution", "64 Players", "Vehicular Combat", "Classic FPS"],
+    achievementsUnlocked: 42,
+    totalAchievements: 42,
+    isFavorite: true,
+    personalNotes: "Timeless multiplayer shooter. Siege of Shanghai skyscraper collapse runs locked at maximum refresh rate."
+  },
+  {
+    id: "game-bfv",
+    title: "Battlefield V",
+    genre: "FPS / Shooter",
+    platform: "EA App",
+    hoursPlayed: 96.2,
+    lastPlayed: "2 weeks ago",
+    status: "Playing",
+    rating: 4,
+    completionPercentage: 70,
+    profileMode: "Turbo",
+    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80",
+    bannerImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80",
+    description: "World War II as you've never seen it before. Immersive squad-focused warfare with real-time Ray-Traced ambient reflections.",
+    tags: ["WWII", "Ray Tracing", "Frostbite Engine", "Large Scale"],
+    achievementsUnlocked: 24,
+    totalAchievements: 32,
+    isFavorite: false,
+    personalNotes: "Intense Pacific War breakthrough combat with zero thermal throttling on Turbo profile."
+  }
+];
 
 /**
  * Empty / Blank placeholder slots ready for future game entries.
- * Styled with tech indicators, empty card borders, and quick registration cues.
  */
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "01",
-    sectorCode: "SECTOR-ALPHA // UNALLOCATED",
+    slotNumber: "07",
+    sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "02",
-    sectorCode: "SECTOR-BETA // STANDBY",
+    slotNumber: "08",
+    sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "03",
-    sectorCode: "SECTOR-GAMMA // READY",
+    slotNumber: "09",
+    sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
-  },
-  {
-    id: "placeholder-slot-4",
-    slotNumber: "04",
-    sectorCode: "SECTOR-DELTA // RESERVED",
-    titlePrompt: "Unassigned Sector",
-    description: "Awaiting custom user game metadata."
-  },
-  {
-    id: "placeholder-slot-5",
-    slotNumber: "05",
-    sectorCode: "SECTOR-EPSILON // VACANT",
-    titlePrompt: "Vacant Slot",
-    description: "Ready for game installation."
   }
 ];
 
@@ -247,10 +352,10 @@ export const AURA_EFFECTS = [
 
 export const GENRES = [
   "All",
-  "Action RPG",
   "Action / Adventure",
+  "Action RPG / Open World",
+  "Action RPG",
   "FPS / Shooter",
-  "Racing / Open World",
   "Souls-like",
   "Strategy / Simulation",
   "Sports / Fighting",
@@ -261,12 +366,11 @@ export const GENRES = [
 export const PLATFORMS = [
   "All Platforms",
   "Steam",
-  "Epic Games",
-  "Xbox Game Pass",
   "PlayStation PC",
-  "GOG",
   "Battle.net",
   "EA App",
   "Ubisoft Connect",
+  "Xbox Game Pass",
+  "GOG",
   "Custom Executable"
 ];
