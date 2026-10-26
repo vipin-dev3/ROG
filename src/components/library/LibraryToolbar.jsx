@@ -27,8 +27,11 @@ export default function LibraryToolbar() {
     sortBy,
     setSortBy,
     setIsAddModalOpen,
-    games
+    games,
+    theme
   } = useRog();
+
+  const isLight = theme === 'light';
 
   const statusTabs = [
     { id: 'All', label: 'All Games', count: games.length },
@@ -43,18 +46,18 @@ export default function LibraryToolbar() {
   return (
     <div className="space-y-4 select-none">
       {/* Vault Title Bar & Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1f1f2e] pb-4">
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b ${isLight ? 'border-slate-200' : 'border-[#1f1f2e]'} pb-4`}>
         <div>
-          <div className="flex items-center text-xl sm:text-2xl font-bold font-sans tracking-wide text-white">
+          <div className={`flex items-center text-xl sm:text-2xl font-bold font-sans tracking-wide ${isLight ? 'text-gray-900' : 'text-white'}`}>
             <RogSlashes count={3} />
             <span>GAME LIBRARY // ROG VAULT</span>
           </div>
-          <p className="text-xs font-mono text-gray-400 mt-1 flex items-center gap-2">
-            <span>INDEXED TITLES: <strong className="text-white">{games.length}</strong></span>
+          <p className={`text-xs font-mono mt-1 flex items-center gap-2 ${isLight ? 'text-gray-600' : 'text-gray-400'}`}>
+            <span>INDEXED TITLES: <strong className={isLight ? 'text-gray-900 font-bold' : 'text-white'}>{games.length}</strong></span>
             <span>•</span>
             <span>TOTAL PLAYTIME: <strong className="text-rog-red">{totalHours} HOURS</strong></span>
             <span>•</span>
-            <span className="text-emerald-400">STATUS: REPOSITORY SYNCHRONIZED</span>
+            <span className="text-emerald-500 font-bold">STATUS: SYNCHRONIZED</span>
           </p>
         </div>
 
@@ -84,13 +87,17 @@ export default function LibraryToolbar() {
               }}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center space-x-2 ${
                 isActive
-                  ? 'bg-[#1e1e2d] text-white border-b-2 border-rog-red shadow-[0_0_12px_rgba(255,0,51,0.3)]'
-                  : 'bg-[#121218] text-gray-400 hover:text-gray-200 hover:bg-[#161622] border border-transparent'
+                  ? (isLight 
+                      ? 'bg-white text-gray-900 border-b-2 border-rog-red shadow-sm font-bold' 
+                      : 'bg-[#1e1e2d] text-white border-b-2 border-rog-red shadow-[0_0_12px_rgba(255,0,51,0.3)]')
+                  : (isLight 
+                      ? 'bg-slate-100 text-gray-600 hover:text-gray-900 hover:bg-slate-200 border border-transparent' 
+                      : 'bg-[#121218] text-gray-400 hover:text-gray-200 hover:bg-[#161622] border border-transparent')
               }`}
             >
               <span>{tab.label}</span>
               <span className={`text-[10px] px-1.5 py-0.2 rounded font-mono ${
-                isActive ? 'bg-rog-red text-white' : 'bg-[#1c1c28] text-gray-400'
+                isActive ? 'bg-rog-red text-white' : (isLight ? 'bg-slate-200 text-gray-700' : 'bg-[#1c1c28] text-gray-400')
               }`}>
                 {tab.count}
               </span>
@@ -100,21 +107,27 @@ export default function LibraryToolbar() {
       </div>
 
       {/* Search, Genre, Platform & Sort Controls Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-3 bg-[#111118] p-3 rounded-xl border border-[#1e1e2c]">
+      <div className={`grid grid-cols-1 md:grid-cols-12 gap-3 p-3 rounded-xl border ${
+        isLight ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#111118] border-[#1e1e2c]'
+      }`}>
         {/* Search Input */}
         <div className="md:col-span-5 relative">
-          <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className={`w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 ${isLight ? 'text-gray-500' : 'text-gray-400'}`} />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search vault by title, developer, or tag..."
-            className="w-full bg-[#161622] border border-[#262638] focus:border-rog-red focus:ring-1 focus:ring-rog-red text-xs text-white placeholder-gray-500 rounded-lg pl-9 pr-8 py-2 outline-none font-sans"
+            className={`w-full rounded-lg pl-9 pr-8 py-2 outline-none font-sans text-xs transition-colors ${
+              isLight 
+                ? 'bg-slate-50 border border-slate-300 focus:border-rog-red text-gray-900 placeholder-gray-400' 
+                : 'bg-[#161622] border border-[#262638] focus:border-rog-red text-white placeholder-gray-500'
+            }`}
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+              className={`absolute right-2.5 top-1/2 -translate-y-1/2 ${isLight ? 'text-gray-400 hover:text-gray-700' : 'text-gray-400 hover:text-white'}`}
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -129,10 +142,14 @@ export default function LibraryToolbar() {
               playUiClick();
               setSelectedGenre(e.target.value);
             }}
-            className="w-full bg-[#161622] border border-[#262638] focus:border-rog-red text-xs text-gray-200 rounded-lg px-3 py-2 outline-none cursor-pointer"
+            className={`w-full rounded-lg px-3 py-2 outline-none cursor-pointer text-xs ${
+              isLight 
+                ? 'bg-slate-50 border border-slate-300 focus:border-rog-red text-gray-900' 
+                : 'bg-[#161622] border border-[#262638] focus:border-rog-red text-gray-200'
+            }`}
           >
             {GENRES.map((g) => (
-              <option key={g} value={g} className="bg-[#121218] text-white">
+              <option key={g} value={g} className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>
                 {g === 'All' ? 'All Genres' : g}
               </option>
             ))}
@@ -147,10 +164,14 @@ export default function LibraryToolbar() {
               playUiClick();
               setSelectedPlatform(e.target.value);
             }}
-            className="w-full bg-[#161622] border border-[#262638] focus:border-rog-red text-xs text-gray-200 rounded-lg px-3 py-2 outline-none cursor-pointer"
+            className={`w-full rounded-lg px-3 py-2 outline-none cursor-pointer text-xs ${
+              isLight 
+                ? 'bg-slate-50 border border-slate-300 focus:border-rog-red text-gray-900' 
+                : 'bg-[#161622] border border-[#262638] focus:border-rog-red text-gray-200'
+            }`}
           >
             {PLATFORMS.map((p) => (
-              <option key={p} value={p} className="bg-[#121218] text-white">
+              <option key={p} value={p} className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>
                 {p}
               </option>
             ))}
@@ -165,16 +186,19 @@ export default function LibraryToolbar() {
               playUiClick();
               setSortBy(e.target.value);
             }}
-            className="w-full bg-[#161622] border border-[#262638] focus:border-rog-red text-xs text-gray-200 rounded-lg px-3 py-2 outline-none cursor-pointer"
+            className={`w-full rounded-lg px-3 py-2 outline-none cursor-pointer text-xs ${
+              isLight 
+                ? 'bg-slate-50 border border-slate-300 focus:border-rog-red text-gray-900' 
+                : 'bg-[#161622] border border-[#262638] focus:border-rog-red text-gray-200'
+            }`}
           >
-            <option value="hoursPlayed" className="bg-[#121218]">Most Played</option>
-            <option value="lastPlayed" className="bg-[#121218]">Recently Played</option>
-            <option value="title" className="bg-[#121218]">Title (A-Z)</option>
-            <option value="rating" className="bg-[#121218]">Top Rated</option>
+            <option value="hoursPlayed" className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>Most Played</option>
+            <option value="lastPlayed" className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>Recently Played</option>
+            <option value="title" className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>Title (A-Z)</option>
+            <option value="rating" className={isLight ? 'bg-white text-gray-900' : 'bg-[#121218] text-white'}>Top Rated</option>
           </select>
         </div>
       </div>
     </div>
   );
 }
-

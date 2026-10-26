@@ -19,8 +19,11 @@ export default function GameCard({ game }) {
     setActiveLaunchingGame, 
     toggleFavorite, 
     logHours,
-    openGameModal 
+    openGameModal,
+    theme
   } = useRog();
+
+  const isLight = theme === 'light';
 
   const handleLaunch = (e) => {
     e.stopPropagation();
@@ -56,16 +59,18 @@ export default function GameCard({ game }) {
   };
 
   const statusColors = {
-    Playing: 'border-emerald-500/60 text-emerald-400 bg-emerald-500/10',
-    Completed: 'border-yellow-500/60 text-yellow-400 bg-yellow-500/10',
-    Wishlist: 'border-cyan-500/60 text-cyan-400 bg-cyan-500/10',
-    Backlog: 'border-purple-500/60 text-purple-400 bg-purple-500/10'
+    Playing: 'border-emerald-500/60 text-emerald-500 bg-emerald-500/10',
+    Completed: 'border-yellow-500/60 text-yellow-600 bg-yellow-500/10',
+    Wishlist: 'border-cyan-500/60 text-cyan-600 bg-cyan-500/10',
+    Backlog: 'border-purple-500/60 text-purple-600 bg-purple-500/10'
   };
 
   return (
     <div
       onClick={handleCardClick}
-      className="group relative bg-[#121218] border border-[#20202d] hover:border-rog-red/80 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,51,0.35)] flex flex-col justify-between"
+      className={`group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,0,51,0.35)] hover:border-rog-red/80 flex flex-col justify-between ${
+        isLight ? 'bg-white border border-slate-200 shadow-sm' : 'bg-[#121218] border border-[#20202d]'
+      }`}
     >
       {/* Top Cover Image Area */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0d0d12]">
@@ -74,13 +79,12 @@ export default function GameCard({ game }) {
           alt={game.title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter brightness-95 group-hover:brightness-105"
           onError={(e) => {
-            // fallback image
             e.currentTarget.src = "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80";
           }}
         />
 
         {/* Dark Vignette Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#121218] via-transparent to-black/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#121218]/90 via-transparent to-black/60 pointer-events-none" />
 
         {/* Top Floating Badges */}
         <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
@@ -156,30 +160,34 @@ export default function GameCard({ game }) {
       {/* Card Info Details */}
       <div className="p-3.5 flex flex-col justify-between flex-1 space-y-3">
         <div>
-          <h3 className="text-sm font-bold font-sans text-white group-hover:text-rog-red transition-colors line-clamp-1">
+          <h3 className={`text-sm font-bold font-sans group-hover:text-rog-red transition-colors line-clamp-1 ${
+            isLight ? 'text-gray-900' : 'text-white'
+          }`}>
             {game.title}
           </h3>
-          <p className="text-xs text-gray-400 font-sans mt-0.5 line-clamp-1">
+          <p className={`text-xs font-sans mt-0.5 line-clamp-1 ${
+            isLight ? 'text-gray-500' : 'text-gray-400'
+          }`}>
             {game.genre}
           </p>
         </div>
 
         {/* Playtime & Achievements Progress */}
-        <div className="pt-2 border-t border-[#1b1b26] space-y-1.5">
+        <div className={`pt-2 border-t space-y-1.5 ${isLight ? 'border-slate-100' : 'border-[#1b1b26]'}`}>
           <div className="flex items-center justify-between text-xs font-mono text-gray-400">
             <span className="flex items-center space-x-1">
-              <Clock className="w-3 h-3 text-gray-500" />
-              <span className="text-gray-200 font-semibold">{game.hoursPlayed} hrs</span>
+              <Clock className={`w-3 h-3 ${isLight ? 'text-gray-400' : 'text-gray-500'}`} />
+              <span className={`font-semibold ${isLight ? 'text-gray-900' : 'text-gray-200'}`}>{game.hoursPlayed} hrs</span>
             </span>
 
-            <span className="flex items-center space-x-1 text-[11px] text-gray-400">
+            <span className={`flex items-center space-x-1 text-[11px] ${isLight ? 'text-gray-600' : 'text-gray-400'}`}>
               <Trophy className="w-3 h-3 text-yellow-500" />
               <span>{game.achievementsUnlocked}/{game.totalAchievements}</span>
             </span>
           </div>
 
           {/* Progress Bar for Completion */}
-          <div className="w-full bg-[#181822] h-1 rounded-full overflow-hidden">
+          <div className={`w-full h-1 rounded-full overflow-hidden ${isLight ? 'bg-slate-200' : 'bg-[#181822]'}`}>
             <div
               className="h-full bg-gradient-to-r from-rog-red to-[#ff007f] rounded-full"
               style={{ width: `${game.completionPercentage || 50}%` }}
@@ -190,4 +198,3 @@ export default function GameCard({ game }) {
     </div>
   );
 }
-

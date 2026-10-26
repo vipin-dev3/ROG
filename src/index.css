@@ -22,6 +22,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+  background: #ff0033;
+  color: #ffffff;
+}
+
 /* Custom Cyberpunk / ROG Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -122,17 +127,20 @@ body {
 }
 
 /* ==========================================================================
-   MOONLIGHT WHITE (LIGHT THEME) - ROG ZEPHYRUS EDITION
+   MOONLIGHT WHITE (LIGHT THEME) - ZEPHYRUS MOONLIGHT EDITION
    ========================================================================== */
+
+.theme-light {
+  color-scheme: light !important;
+}
 
 .theme-light,
 .theme-light body {
-  color-scheme: light !important;
   background-color: #f1f3f9 !important;
   color: #0f172a !important;
 }
 
-/* Light Theme Scrollbars */
+/* Scrollbars */
 .theme-light ::-webkit-scrollbar-track {
   background: #f1f3f9 !important;
 }
@@ -143,13 +151,30 @@ body {
   background: #ff0033 !important;
 }
 
-/* Light Mesh Overlay */
+/* Mesh Overlay */
 .theme-light .bg-rog-mesh {
   background-color: #f1f3f9 !important;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(255, 0, 51, 0.05) 0%, transparent 60%),
-    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px) !important;
+    radial-gradient(circle at 50% 0%, rgba(255, 0, 51, 0.04) 0%, transparent 60%),
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px) !important;
+}
+
+/* Header & Sidebar Structural Containers */
+.theme-light header {
+  background-color: #ffffff !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+.theme-light header * {
+  border-color: #e2e8f0 !important;
+}
+
+.theme-light aside {
+  background-color: #ffffff !important;
+  border-right-color: #e2e8f0 !important;
+}
+.theme-light aside * {
+  border-color: #e2e8f0 !important;
 }
 
 /* Base Surfaces & Structural Backgrounds */
@@ -157,13 +182,13 @@ body {
 .theme-light .bg-\[\#0a0a0c\],
 .theme-light .bg-\[\#0c0c10\]\/90,
 .theme-light .bg-\[\#0d0d12\],
-.theme-light header.bg-\[\#0a0a0c\],
-.theme-light aside.bg-\[\#0d0d12\] {
+.theme-light .bg-\[\#0d0d12\]\/50 {
   background-color: #ffffff !important;
 }
 
 /* High-Tech White Card Containers */
 .theme-light .bg-\[\#101016\],
+.theme-light .bg-\[\#101016\]\/90,
 .theme-light .bg-\[\#101016\]\/95,
 .theme-light .bg-\[\#111118\],
 .theme-light .bg-\[\#121217\],
@@ -175,7 +200,8 @@ body {
 .theme-light .bg-\[\#161622\],
 .theme-light .bg-\[\#161624\] {
   background-color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05) !important;
 }
 
 /* Recessed Inset Elements & Inner Sections */
@@ -190,12 +216,14 @@ body {
 .theme-light .bg-\[\#1b1b26\],
 .theme-light .bg-\[\#1b1b28\],
 .theme-light .bg-\[\#1c1c28\],
+.theme-light .bg-\[\#1d1d2b\],
 .theme-light .bg-\[\#1e1e2a\],
 .theme-light .bg-\[\#1e1e2c\],
 .theme-light .bg-\[\#1e1e2d\],
 .theme-light .bg-\[\#20202e\],
 .theme-light .bg-\[\#202030\] {
   background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
 }
 
 /* Light Borders & Dividers */
@@ -206,6 +234,7 @@ body {
 .theme-light .border-\[\#1b1b26\],
 .theme-light .border-\[\#1c1c28\],
 .theme-light .border-\[\#1e1e28\],
+.theme-light .border-\[\#1e1e2a\],
 .theme-light .border-\[\#1e1e2c\],
 .theme-light .border-\[\#1f1f2a\],
 .theme-light .border-\[\#1f1f2e\],
@@ -217,6 +246,7 @@ body {
 .theme-light .border-\[\#232334\],
 .theme-light .border-\[\#262638\],
 .theme-light .border-\[\#2a2a3c\],
+.theme-light .border-\[\#2b2b3a\],
 .theme-light .border-\[\#2b2b3c\],
 .theme-light .border-\[\#2b2b3e\],
 .theme-light .border-\[\#2b2b3f\],
@@ -226,16 +256,22 @@ body {
 .theme-light .border-\[\#303046\],
 .theme-light .border-\[\#3b3b55\],
 .theme-light .border-gray-800,
-.theme-light .border-gray-700 {
+.theme-light .border-gray-700,
+.theme-light .border-gray-600 {
   border-color: #e2e8f0 !important;
 }
 
-/* Light Mode Typography Hierarchy */
-.theme-light .text-white {
+/* Light Mode Typography Hierarchy (Crisp Dark Slate) */
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light .text-white,
+.theme-light .font-bold.text-white {
   color: #0f172a !important;
 }
 
-.theme-light .text-gray-200 {
+.theme-light .text-gray-200,
+.theme-light .text-gray-200 span {
   color: #1e293b !important;
 }
 
@@ -251,16 +287,44 @@ body {
   color: #94a3b8 !important;
 }
 
-/* Exceptions: Preserve white text inside buttons and badges */
-.theme-light .bg-rog-red,
-.theme-light .bg-rog-red *,
-.theme-light [class*="bg-rog-red"] *,
+/* Progress bar background in light mode */
+.theme-light .bg-\[\#181822\] {
+  background-color: #e2e8f0 !important;
+}
+
+/* Laptop 3D Render Card in Light Mode */
+.theme-light .bg-gradient-to-b.from-\[\#111118\]\/80.to-\[\#0c0c10\]\/90 {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 6px 25px rgba(15, 23, 42, 0.06) !important;
+}
+
+.theme-light .bg-gradient-to-r.from-\[\#171722\].via-\[\#242436\].to-\[\#171722\] {
+  background: linear-gradient(90deg, #cbd5e1 0%, #e2e8f0 50%, #cbd5e1 100%) !important;
+  border-top-color: #cbd5e1 !important;
+}
+
+.theme-light .bg-\[\#0f0f15\] {
+  background-color: #1e293b !important;
+}
+
+/* Operating Mode Bar Buttons */
+.theme-light button.group:hover:not(.bg-rog-red) {
+  background-color: #f1f5f9 !important;
+}
+
+/* Solid Crimson Buttons & Badges: Always Crisp White Text */
 .theme-light button.bg-rog-red,
-.theme-light button.bg-rog-red * {
+.theme-light button.bg-rog-red *,
+.theme-light a.bg-rog-red,
+.theme-light a.bg-rog-red *,
+.theme-light .bg-rog-red.text-white,
+.theme-light .bg-rog-red > span,
+.theme-light .bg-rog-red > svg {
   color: #ffffff !important;
 }
 
-/* Form Inputs & Selects in Light Mode */
+/* Form Inputs, Selects & Textareas in Light Mode */
 .theme-light input,
 .theme-light select,
 .theme-light textarea {
@@ -281,9 +345,9 @@ body {
   color: #0f172a !important;
 }
 
-/* Modal Backdrops & Overlays */
+/* Modal Backdrops */
 .theme-light .bg-black\/80,
 .theme-light .bg-black\/85,
 .theme-light .bg-black\/75 {
-  background-color: rgba(15, 23, 42, 0.7) !important;
+  background-color: rgba(15, 23, 42, 0.65) !important;
 }
