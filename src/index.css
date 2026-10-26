@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --rog-accent: #ff0033;
+  --rog-accent-rgb: 255, 0, 51;
+  --rog-glow: rgba(255, 0, 51, 0.35);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0c;
+  color: #f1f1f5;
+  font-family: 'Rajdhani', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Cyberpunk / ROG Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d12;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2b3a;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rog-accent);
+  box-shadow: 0 0 10px var(--rog-accent);
+}
+
+/* Angular Tech Cuts */
+.tech-clip-corner {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+
+.tech-clip-notch {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.tech-clip-tab {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%);
+}
+
+.tech-clip-card {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+}
+
+/* Carbon & Hex Grid Overlays */
+.bg-rog-mesh {
+  background-color: #0a0a0c;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 0, 51, 0.08) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+.bg-circuit-lines {
+  background-image: radial-gradient(rgba(255, 0, 51, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ROG Gradient Progress Bar */
+.rog-telemetry-bar {
+  background: linear-gradient(90deg, #ff007f 0%, #ff0033 100%);
+  box-shadow: 0 0 12px rgba(255, 0, 51, 0.5);
+}
+
+.rog-telemetry-bar-cyan {
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.5);
+}
+
+.rog-telemetry-bar-amber {
+  background: linear-gradient(90deg, #ff8c00 0%, #ff0033 100%);
+  box-shadow: 0 0 14px rgba(255, 140, 0, 0.6);
+}
+
+/* Slanted Stripes */
+.rog-slashes {
+  display: inline-flex;
+  gap: 3px;
+}
+.rog-slash-bar {
+  width: 4px;
+  height: 14px;
+  transform: skewX(-24deg);
+  background-color: #ff0033;
+}
+
+/* Subtle Scanline Overlay */
+.scanline-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.25)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Glow Utilities */
+.text-glow-red {
+  text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
