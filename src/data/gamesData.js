@@ -329,6 +329,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 52,
     isFavorite: true,
     personalNotes: "Flawless PC port with unlocked framerates, ultrawide 21:9 support, and DLSS 3. Stand-off duels look cinematic at 240Hz."
+  },
+  {
+    id: "game-gta5",
+    title: "Grand Theft Auto V",
+    genre: "Action / Open World",
+    platform: "Rockstar Games",
+    hoursPlayed: 248.5,
+    lastPlayed: "Today",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Turbo",
+    coverImage: "./covers/gta-5.jpg",
+    bannerImage: "./covers/gta-5.jpg",
+    description: "When a young street hustler, a retired bank robber, and a terrifying psychopath find themselves entangled with the criminal underworld, they must pull off a series of dangerous heists to survive in Los Santos.",
+    tags: ["Open World", "Heists", "Los Santos", "Ray Tracing", "Mastered"],
+    achievementsUnlocked: 77,
+    totalAchievements: 77,
+    isFavorite: true,
+    personalNotes: "Cruising down Vinewood Boulevard at twilight. Ultra graphics and ray tracing shadows run locked at 144+ FPS on Turbo profile."
   }
 ];
 
@@ -338,21 +358,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "10",
+    slotNumber: "11",
     sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "11",
+    slotNumber: "12",
     sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "12",
+    slotNumber: "13",
     sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
