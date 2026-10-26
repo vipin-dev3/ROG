@@ -118,7 +118,8 @@ export function RogProvider({ children }) {
       localStorage.removeItem('rog_vault_games_v14');
       localStorage.removeItem('rog_vault_games_v15');
       localStorage.removeItem('rog_vault_games_v16');
-      const saved = localStorage.getItem('rog_vault_games_v17');
+      localStorage.removeItem('rog_vault_games_v17');
+      const saved = localStorage.getItem('rog_vault_games_v18');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -162,7 +163,7 @@ export function RogProvider({ children }) {
 
   // Persist Games
   useEffect(() => {
-    localStorage.setItem('rog_vault_games_v17', JSON.stringify(games));
+    localStorage.setItem('rog_vault_games_v18', JSON.stringify(games));
   }, [games]);
 
   // Persist Operating Mode
@@ -329,7 +330,7 @@ export function RogProvider({ children }) {
   const importLibrary = (newGames) => {
     if (Array.isArray(newGames)) {
       setGames(newGames);
-      localStorage.setItem('rog_vault_games_v17', JSON.stringify(newGames));
+      localStorage.setItem('rog_vault_games_v18', JSON.stringify(newGames));
       return true;
     }
     return false;
@@ -338,7 +339,7 @@ export function RogProvider({ children }) {
   const resetDefaults = () => {
     setGames(INITIAL_GAMES);
     setOperatingModeState('windows');
-    localStorage.removeItem('rog_vault_games_v17');
+    localStorage.removeItem('rog_vault_games_v18');
     localStorage.removeItem('rog_operating_mode');
     localStorage.removeItem('rog_system_specs');
     localStorage.removeItem('rog_user_alias');
