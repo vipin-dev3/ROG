@@ -389,6 +389,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 44,
     isFavorite: true,
     personalNotes: "Did I ever tell you the definition of insanity? Rook Islands look vibrant at 240Hz with locked maximum framerates."
+  },
+  {
+    id: "game-nfsmw",
+    title: "Need for Speed: Most Wanted",
+    genre: "Racing / Action",
+    platform: "EA App",
+    hoursPlayed: 94.2,
+    lastPlayed: "Today",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Turbo",
+    coverImage: "./covers/nfs-most-wanted.jpg",
+    bannerImage: "./covers/nfs-most-wanted.jpg",
+    description: "Rise to the top of the Blacklist in Rockport City behind the wheel of the legendary BMW M3 GTR. Outrun high-heat police pursuits, evade spike strips and roadblocks, and claim the #1 spot.",
+    tags: ["Blacklist #1", "BMW M3 GTR", "Police Pursuit", "Rockport", "Mastered"],
+    achievementsUnlocked: 15,
+    totalAchievements: 15,
+    isFavorite: true,
+    personalNotes: "The roar of the straight-cut gears on the BMW M3 GTR at twilight. Unlocked framerates and widescreen mod run silky smooth on Turbo profile."
   }
 ];
 
@@ -398,22 +418,22 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "13",
-    sectorCode: "SECTOR-GAMMA // UNALLOCATED",
+    slotNumber: "14",
+    sectorCode: "SECTOR-DELTA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "14",
-    sectorCode: "SECTOR-DELTA // STANDBY",
+    slotNumber: "15",
+    sectorCode: "SECTOR-EPSILON // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "15",
-    sectorCode: "SECTOR-EPSILON // RESERVED",
+    slotNumber: "16",
+    sectorCode: "SECTOR-ZETA // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
   }
