@@ -110,7 +110,22 @@ rog/
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Automated Deployment with GitHub Actions
+
+The repository includes a pre-configured GitHub Actions workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) that builds and publishes the web application to **GitHub Pages** whenever changes are pushed to `main`.
+
+### Enabling GitHub Pages in Repository Settings:
+1. Go to your repository on GitHub: **[https://github.com/vipin-dev3/ROG](https://github.com/vipin-dev3/ROG)**
+2. Click **Settings** ➔ **Pages** (under "Code and automation").
+3. Under **Build and deployment** ➔ **Source**, select:
+   - **GitHub Actions**
+4. Push to `main` or manually trigger the workflow from the **Actions** tab.
+5. Your live ROG Gaming Vault will be live at:
+   - **`https://vipin-dev3.github.io/ROG/`**
+
+---
+
+## 💻 Manual Setup & Local Development
 
 ### Prerequisites
 - Node.js (v18 or higher recommended)
@@ -131,35 +146,15 @@ Open your browser and navigate to `http://localhost:5173` to explore the ROG Gam
 
 ---
 
-## 📦 Production Build & Deployment
+## 📦 Production Build
 
-### Build for Production
-To generate optimized production assets in the `dist` directory:
 ```bash
+# Build production bundle in /dist
 npm run build
-```
 
-### Preview the Production Build
-```bash
+# Preview production build locally
 npm run preview
 ```
-
-### Deploying to Platforms
-
-#### Vercel
-```bash
-npm install -g vercel
-vercel
-```
-
-#### Netlify
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-#### GitHub Pages
-1. In `vite.config.js`, set `base: '/<repository-name>/'`.
-2. Run `npm run build`.
-3. Deploy the `dist` directory to the `gh-pages` branch.
 
 ---
 
