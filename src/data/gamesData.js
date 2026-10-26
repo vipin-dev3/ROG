@@ -309,6 +309,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 65,
     isFavorite: true,
     personalNotes: "Jaw-dropping visual fidelity on the 240Hz Nebula HDR display. Ray Traced reflections in cockpit cam look sensational."
+  },
+  {
+    id: "game-got",
+    title: "Ghost of Tsushima",
+    genre: "Action / Adventure",
+    platform: "PlayStation PC",
+    hoursPlayed: 68.4,
+    lastPlayed: "Yesterday",
+    status: "Completed",
+    rating: 5,
+    completionPercentage: 100,
+    profileMode: "Turbo",
+    coverImage: "./covers/ghost-of-tsushima.jpg",
+    bannerImage: "./covers/ghost-of-tsushima.jpg",
+    description: "In the late 13th century, the Mongol empire laid waste to entire nations. As Jin Sakai, one of the last surviving samurai, forge a new way of fighting—the way of the Ghost—to protect Tsushima.",
+    tags: ["PlayStation PC", "Samurai", "Open World", "Kurosawa Cinema", "Mastered"],
+    achievementsUnlocked: 52,
+    totalAchievements: 52,
+    isFavorite: true,
+    personalNotes: "Flawless PC port with unlocked framerates, ultrawide 21:9 support, and DLSS 3. Stand-off duels look cinematic at 240Hz."
   }
 ];
 
@@ -318,21 +338,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "09",
+    slotNumber: "10",
     sectorCode: "SECTOR-GAMMA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "10",
+    slotNumber: "11",
     sectorCode: "SECTOR-DELTA // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "11",
+    slotNumber: "12",
     sectorCode: "SECTOR-EPSILON // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
