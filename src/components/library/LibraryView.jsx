@@ -4,7 +4,7 @@ import { EMPTY_PLACEHOLDER_SLOTS } from '../../data/gamesData';
 import LibraryToolbar from './LibraryToolbar';
 import GameCard from './GameCard';
 import PlaceholderCard from './PlaceholderCard';
-import { Gamepad2, SearchX, Plus, Sparkles } from 'lucide-react';
+import { Gamepad2, SearchX, Plus } from 'lucide-react';
 import { playUiClick } from '../../utils/soundEffects';
 
 export default function LibraryView() {

@@ -3,7 +3,7 @@ import {
   Home, 
   Gamepad2, 
   Cpu, 
-  Sparkles, 
+  Palette, 
   Settings, 
   Menu, 
   Sliders, 
@@ -47,7 +47,7 @@ export default function Sidebar() {
       id: 'aura',
       label: 'Aura Sync Lighting',
       shortLabel: 'Aura Sync',
-      icon: Sparkles,
+      icon: Palette,
       badge: null
     },
     {

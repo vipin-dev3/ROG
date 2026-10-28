@@ -486,7 +486,7 @@ export const AURA_EFFECTS = [
   { id: "breathing", name: "Breathing", icon: "Activity", description: "Smooth pulsating rhythm" },
   { id: "strobing", name: "Strobing", icon: "Zap", description: "Sharp strobe flashes" },
   { id: "cycle", name: "Color Cycle", icon: "RefreshCw", description: "Continuous spectrum transition" },
-  { id: "rainbow", name: "Rainbow Wave", icon: "Sparkles", description: "Flowing multi-color waves" },
+  { id: "rainbow", name: "Rainbow Wave", icon: "Palette", description: "Flowing multi-color waves" },
   { id: "smart", name: "Smart Thermal", icon: "Thermometer", description: "Changes color based on CPU heat" }
 ];
 

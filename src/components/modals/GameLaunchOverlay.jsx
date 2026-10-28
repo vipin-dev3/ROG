@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Play, CheckCircle2, ShieldCheck, Flame, Cpu, Sparkles } from 'lucide-react';
+import { X, Play, CheckCircle2, ShieldCheck, Flame, Cpu } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useRog } from '../../context/RogContext';
 import { playUiClick } from '../../utils/soundEffects';

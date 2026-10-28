@@ -5,7 +5,6 @@ import {
   Filter, 
   ArrowUpDown, 
   Layers, 
-  Sparkles,
   Gamepad,
   X
 } from 'lucide-react';

@@ -6,7 +6,6 @@ import {
   MoreVertical, 
   Flame, 
   Trophy, 
-  Sparkles, 
   PlusCircle,
   Edit2
 } from 'lucide-react';

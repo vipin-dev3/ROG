@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Plus, Image, Sparkles, Flame, Check } from 'lucide-react';
+import { X, Plus, Image, Flame, Check } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import { GENRES, PLATFORMS } from '../../data/gamesData';
 import { playUiClick } from '../../utils/soundEffects';

@@ -7,7 +7,6 @@ import {
   Trash2, 
   Star, 
   Flame, 
-  Sparkles,
   PlusCircle,
   CheckCircle,
   Edit2,

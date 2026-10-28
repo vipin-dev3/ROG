@@ -1,6 +1,6 @@
 import React from 'react';
 import { 
-  Sparkles, 
+  Palette, 
   Lightbulb, 
   Activity, 
   Zap, 
@@ -69,7 +69,7 @@ export default function AuraSyncView() {
           {/* Effects Grid */}
           <div className="bg-[#101016] border border-[#1e1e2c] rounded-2xl p-5 space-y-4">
             <h3 className="text-sm font-bold font-sans tracking-wide text-white uppercase flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-rog-red" />
+              <Palette className="w-4 h-4 text-rog-red" />
               <span>Basic & Dynamic Lighting Effects</span>
             </h3>
 

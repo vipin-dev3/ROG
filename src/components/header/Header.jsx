@@ -7,7 +7,7 @@ import {
   VolumeX, 
   Smartphone, 
   FileText, 
-  Sparkles,
+  Palette,
   Activity,
   Cpu,
   Layers,
@@ -120,7 +120,7 @@ export default function Header() {
               isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-slate-100' : 'text-gray-400 hover:text-white hover:bg-[#1a1a24]'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 hover:text-rog-red" />
+            <Palette className="w-3.5 h-3.5 hover:text-rog-red" />
           </button>
 
           {/* Release Notes / Documentation */}
