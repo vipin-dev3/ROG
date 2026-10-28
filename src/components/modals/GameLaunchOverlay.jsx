@@ -3,6 +3,7 @@ import { X, Play, CheckCircle2, ShieldCheck, Flame, Cpu } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useRog } from '../../context/RogContext';
 import { playUiClick } from '../../utils/soundEffects';
+import RogVLogo from '../common/RogVLogo';
 
 export default function GameLaunchOverlay() {
   const { activeLaunchingGame, setActiveLaunchingGame, logHours } = useRog();
@@ -82,13 +83,9 @@ export default function GameLaunchOverlay() {
           <X className="w-5 h-5" />
         </button>
 
-        {/* ROG Eye Emblem */}
+        {/* ROG V Emblem */}
         <div className="mx-auto w-16 h-16 flex items-center justify-center mb-4">
-          <svg viewBox="0 0 100 100" className="w-14 h-14 fill-rog-red drop-shadow-[0_0_18px_rgba(255,0,51,0.9)] animate-pulse-subtle">
-            <path d="M12 48 L76 16 L88 28 L40 68 Z" />
-            <path d="M28 58 L72 38 L85 52 L38 85 Z" fill="#ffffff" />
-            <path d="M48 68 L82 52 L88 62 L52 88 Z" />
-          </svg>
+          <RogVLogo className="w-14 h-14 animate-pulse-subtle" glow={true} />
         </div>
 
         {/* Title */}

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import RogSlashes from '../common/RogSlashes';
+import RogVLogo from '../common/RogVLogo';
 import { playUiClick } from '../../utils/soundEffects';
 
 export default function LaptopView() {
@@ -79,13 +80,9 @@ export default function LaptopView() {
               {/* Animated Scanline */}
               <div className="absolute inset-0 scanline-overlay opacity-30" />
 
-              {/* ROG Logo on Screen */}
+              {/* ROG V Logo on Screen */}
               <div className="relative z-10 flex flex-col items-center">
-                <svg viewBox="0 0 100 100" className="w-12 h-12 fill-rog-red drop-shadow-[0_0_12px_rgba(255,0,51,0.9)] animate-pulse-subtle">
-                  <path d="M12 48 L76 16 L88 28 L40 68 Z" />
-                  <path d="M28 58 L72 38 L85 52 L38 85 Z" fill="#ffffff" />
-                  <path d="M48 68 L82 52 L88 62 L52 88 Z" />
-                </svg>
+                <RogVLogo className="w-12 h-12 animate-pulse-subtle" accentColor={auraColor} glow={true} />
                 <span className="font-display font-black text-white text-xs tracking-[0.25em] mt-1 drop-shadow-md">
                   ROG STRIX
                 </span>

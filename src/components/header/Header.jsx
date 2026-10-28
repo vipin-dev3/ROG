@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import { playUiClick } from '../../utils/soundEffects';
+import RogVLogo from '../common/RogVLogo';
 
 export default function Header() {
   const { 
@@ -58,13 +59,9 @@ export default function Header() {
       <div className={`flex items-center justify-between px-3 h-10 border-b ${isLight ? 'border-slate-100' : 'border-[#161620]'} text-xs`}>
         {/* Left: Armoury Crate Logo & Title */}
         <div className="flex items-center space-x-2.5">
-          {/* ROG Stylized Eye Emblem */}
+          {/* ROG Stylized V Emblem */}
           <div className="w-5 h-5 flex items-center justify-center">
-            <svg viewBox="0 0 100 100" className="w-4 h-4 fill-rog-red drop-shadow-[0_0_8px_rgba(255,0,51,0.7)]">
-              <path d="M12 48 L76 16 L88 28 L40 68 Z" />
-              <path d="M28 58 L72 38 L85 52 L38 85 Z" fill={isLight ? "#0f172a" : "#ffffff"} />
-              <path d="M48 68 L82 52 L88 62 L52 88 Z" />
-            </svg>
+            <RogVLogo className="w-4 h-4" isLight={isLight} glow={true} />
           </div>
           <span className={`font-semibold tracking-wider text-[13px] font-sans ${isLight ? 'text-gray-900 font-bold' : 'text-gray-200'}`}>
             Armoury Crate

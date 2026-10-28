@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import { playUiClick, playAuthSuccessSound, playAuthErrorSound } from '../../utils/soundEffects';
+import RogVLogo from '../common/RogVLogo';
 
 export default function LoginPage() {
   const { login } = useRog();
@@ -73,14 +74,10 @@ export default function LoginPage() {
         <div className="absolute bottom-2 left-2 w-3.5 h-3.5 border-b-2 border-l-2 border-rog-red" />
         <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-rog-red" />
 
-        {/* ROG Eye Emblem & Title */}
+        {/* ROG V Emblem & Title */}
         <div className="text-center mb-6">
           <div className="mx-auto w-16 h-16 flex items-center justify-center mb-3">
-            <svg viewBox="0 0 100 100" className="w-14 h-14 fill-rog-red drop-shadow-[0_0_18px_rgba(255,0,51,0.9)] animate-pulse-subtle">
-              <path d="M12 48 L76 16 L88 28 L40 68 Z" />
-              <path d="M28 58 L72 38 L85 52 L38 85 Z" fill="#ffffff" />
-              <path d="M48 68 L82 52 L88 62 L52 88 Z" />
-            </svg>
+            <RogVLogo className="w-14 h-14 animate-pulse-subtle" glow={true} />
           </div>
 
           <h1 className="text-2xl font-bold font-sans tracking-widest text-white uppercase flex items-center justify-center gap-2">
