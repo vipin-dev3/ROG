@@ -409,6 +409,26 @@ export const INITIAL_GAMES = [
     totalAchievements: 15,
     isFavorite: true,
     personalNotes: "The roar of the straight-cut gears on the BMW M3 GTR at twilight. Unlocked framerates and widescreen mod run silky smooth on Turbo profile."
+  },
+  {
+    id: "game-cyberpunk2077",
+    title: "Cyberpunk 2077",
+    genre: "Action RPG / Open World",
+    platform: "Steam",
+    hoursPlayed: 1.0,
+    lastPlayed: "Just now",
+    status: "Playing",
+    rating: 5,
+    completionPercentage: 2,
+    profileMode: "Turbo",
+    coverImage: "./covers/cyberpunk-2077.jpg",
+    bannerImage: "./covers/cyberpunk-2077.jpg",
+    description: "An open-world, action-adventure RPG set in the megalopolis of Night City, where you play as a cyberpunk mercenary wrapped up in a do-or-die fight for survival. Full Ray Tracing Overdrive and DLSS 3.5 Ray Reconstruction.",
+    tags: ["Night City", "Ray Tracing Overdrive", "DLSS 3.5", "Cyberware", "Open World RPG"],
+    achievementsUnlocked: 1,
+    totalAchievements: 45,
+    isFavorite: true,
+    personalNotes: "Fresh playthrough started! Night City looks breathtaking with full Path Tracing and Ray Reconstruction on the RTX 4080 and ROG Nebula HDR display."
   }
 ];
 
@@ -418,21 +438,21 @@ export const INITIAL_GAMES = [
 export const EMPTY_PLACEHOLDER_SLOTS = [
   {
     id: "placeholder-slot-1",
-    slotNumber: "14",
+    slotNumber: "15",
     sectorCode: "SECTOR-DELTA // UNALLOCATED",
     titlePrompt: "Click to Register Game",
     description: "Empty high-performance slot. Ready for direct library synchronization."
   },
   {
     id: "placeholder-slot-2",
-    slotNumber: "15",
+    slotNumber: "16",
     sectorCode: "SECTOR-EPSILON // STANDBY",
     titlePrompt: "Empty Vault Slot",
     description: "Awaiting local executable or cloud game deployment."
   },
   {
     id: "placeholder-slot-3",
-    slotNumber: "16",
+    slotNumber: "17",
     sectorCode: "SECTOR-ZETA // RESERVED",
     titlePrompt: "Mount New Title",
     description: "Reserved Armoury Crate profile container."
