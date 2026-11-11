@@ -185,7 +185,7 @@ export default function Header() {
                 playUiClick();
                 setActiveTab('profile');
               }}
-              title="Open Commander Profile Matrix"
+              title="Open Dracula Profile"
               className="flex items-center space-x-1.5 hover:text-[#00f0ff] transition-colors"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />

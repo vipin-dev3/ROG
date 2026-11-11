@@ -185,7 +185,7 @@ export default function ProfileView() {
               </span>
             </div>
             <h1 className="text-xl sm:text-2xl font-bold font-sans tracking-wide uppercase flex items-center gap-2 mt-0.5">
-              <span>COMMANDER {currentUser?.toUpperCase() || 'DRACULA'}</span>
+              <span>{currentUser?.toUpperCase() || 'DRACULA'}</span>
               <span className="text-xs font-mono font-normal px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
                 CLEARANCE LEVEL 5
               </span>
@@ -676,7 +676,7 @@ export default function ProfileView() {
           }`}>
             <div className="flex items-center justify-between pb-3 border-b border-[#1b2538] mb-3">
               <h3 className={`text-xs font-bold font-sans tracking-wider uppercase ${isLight ? 'text-gray-900' : 'text-white'}`}>
-                COMMANDER DEPLOYMENT LOG
+                DRACULA DEPLOYMENT LOG
               </h3>
               <span className="text-[10px] font-mono text-rog-red font-bold">ARMOURY SYNC</span>
             </div>

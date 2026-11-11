@@ -112,7 +112,7 @@ export default function SettingsView() {
     if (aliasInput.trim()) {
       updateCurrentUser(aliasInput.trim());
       setIsEditingAlias(false);
-      showToast('Commander call sign updated.');
+      showToast('User alias updated.');
     }
   };
 
@@ -309,7 +309,7 @@ export default function SettingsView() {
                   <div>
                     <p className="text-xs font-bold text-gray-200 flex items-center gap-2">
                       <UserCheck className="w-4 h-4 text-emerald-400" />
-                      <span>COMMANDER {currentUser?.toUpperCase() || 'DRACULA'}</span>
+                      <span>{currentUser?.toUpperCase() || 'DRACULA'}</span>
                       <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
                         LEVEL 5 CLEARANCE
                       </span>
@@ -336,7 +336,7 @@ export default function SettingsView() {
                     type="text"
                     value={aliasInput}
                     onChange={(e) => setAliasInput(e.target.value)}
-                    placeholder="Enter Commander Call Sign"
+                    placeholder="Enter User Alias (Dracula)"
                     className="flex-1 bg-[#1a1a28] border border-[#2e2e42] focus:border-rog-red text-xs text-white px-3 py-1.5 rounded-lg outline-none font-mono"
                   />
                   <button

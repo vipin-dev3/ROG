@@ -59,7 +59,7 @@ export default function Sidebar() {
     },
     {
       id: 'profile',
-      label: 'Commander Profile',
+      label: 'Dracula Profile',
       shortLabel: 'Profile',
       icon: User,
       badge: 'MATRIX'
@@ -160,7 +160,7 @@ export default function Sidebar() {
               playUiClick();
               setActiveTab('profile');
             }}
-            title="Commander Digital Twin Profile"
+            title="Dracula Profile"
             className={`rounded border flex items-center justify-center transition-all ${
               isExpanded ? 'w-full py-2 px-3 space-x-2.5 justify-start' : 'w-8 h-8'
             } ${
@@ -174,7 +174,7 @@ export default function Sidebar() {
             <User className="w-4 h-4 flex-shrink-0" />
             {isExpanded && (
               <span className="text-xs font-semibold tracking-wide truncate">
-                Commander Profile
+                Dracula Profile
               </span>
             )}
           </button>
