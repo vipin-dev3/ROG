@@ -180,10 +180,19 @@ export default function Header() {
           <div className={`flex items-center space-x-1.5 px-2 py-0.5 rounded border ml-1 ${
             isLight ? 'bg-slate-100 border-slate-300 text-gray-800' : 'bg-[#161622] border-[#232334] text-gray-300'
           }`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
-            <span className="font-mono text-[10px] font-bold tracking-wider">
-              {currentUser || 'DRACULA'}
-            </span>
+            <button
+              onClick={() => {
+                playUiClick();
+                setActiveTab('profile');
+              }}
+              title="Open Commander Profile Matrix"
+              className="flex items-center space-x-1.5 hover:text-[#00f0ff] transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
+              <span className="font-mono text-[10px] font-bold tracking-wider">
+                {currentUser || 'DRACULA'}
+              </span>
+            </button>
             <button
               onClick={() => {
                 playUiClick();

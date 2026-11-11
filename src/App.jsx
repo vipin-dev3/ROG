@@ -8,6 +8,7 @@ import LibraryView from './components/library/LibraryView';
 import TelemetryView from './components/telemetry/TelemetryView';
 import AuraSyncView from './components/aura/AuraSyncView';
 import SettingsView from './components/settings/SettingsView';
+import ProfileView from './components/profile/ProfileView';
 import AddGameModal from './components/modals/AddGameModal';
 import GameDetailModal from './components/modals/GameDetailModal';
 import GameLaunchOverlay from './components/modals/GameLaunchOverlay';
@@ -70,6 +71,10 @@ function MainApp() {
 
           {activeTab === 'settings' && (
             <SettingsView />
+          )}
+
+          {activeTab === 'profile' && (
+            <ProfileView />
           )}
         </main>
       </div>

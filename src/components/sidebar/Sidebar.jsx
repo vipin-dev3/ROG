@@ -7,7 +7,6 @@ import {
   Settings, 
   Menu, 
   Sliders, 
-  Bell, 
   User, 
   Compass,
   Flame,
@@ -57,6 +56,13 @@ export default function Sidebar() {
       icon: Settings,
       badge: null,
       hasDot: true
+    },
+    {
+      id: 'profile',
+      label: 'Commander Profile',
+      shortLabel: 'Profile',
+      icon: User,
+      badge: 'MATRIX'
     }
   ];
 
@@ -147,31 +153,30 @@ export default function Sidebar() {
 
       {/* Bottom Footer Info in Sidebar */}
       <div className={`p-2 border-t space-y-2 ${isLight ? 'border-slate-100' : 'border-[#181822]'}`}>
-        {/* User / Bell Quick Actions */}
-        <div className={`flex items-center ${isExpanded ? 'justify-between px-2' : 'flex-col space-y-2'}`}>
+        {/* User Profile Quick Action (Notification Bell Removed) */}
+        <div className="flex items-center justify-center">
           <button 
-            onClick={() => playUiClick()}
-            title="ROG Elite Profile"
-            className={`w-8 h-8 rounded border flex items-center justify-center transition-colors ${
-              isLight 
-                ? 'bg-slate-100 border-slate-200 text-gray-600 hover:text-gray-900 hover:bg-slate-200' 
-                : 'bg-[#181824] border-gray-600 text-gray-400 hover:text-white'
+            onClick={() => {
+              playUiClick();
+              setActiveTab('profile');
+            }}
+            title="Commander Digital Twin Profile"
+            className={`rounded border flex items-center justify-center transition-all ${
+              isExpanded ? 'w-full py-2 px-3 space-x-2.5 justify-start' : 'w-8 h-8'
+            } ${
+              activeTab === 'profile'
+                ? 'bg-rog-red text-white border-rog-red shadow-[0_0_12px_rgba(255,0,51,0.5)]'
+                : (isLight 
+                    ? 'bg-slate-100 border-slate-200 text-gray-700 hover:text-gray-900 hover:bg-slate-200' 
+                    : 'bg-[#181824] border-gray-700 text-gray-300 hover:text-white hover:border-gray-500')
             }`}
           >
-            <User className="w-4 h-4" />
-          </button>
-          
-          <button 
-            onClick={() => playUiClick()}
-            title="Armoury Notifications"
-            className={`relative w-8 h-8 rounded border flex items-center justify-center transition-colors ${
-              isLight 
-                ? 'bg-slate-100 border-slate-200 text-gray-600 hover:text-gray-900 hover:bg-slate-200' 
-                : 'bg-[#181824] border-gray-600 text-gray-400 hover:text-white'
-            }`}
-          >
-            <Bell className="w-4 h-4" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-rog-red rounded-full" />
+            <User className="w-4 h-4 flex-shrink-0" />
+            {isExpanded && (
+              <span className="text-xs font-semibold tracking-wide truncate">
+                Commander Profile
+              </span>
+            )}
           </button>
         </div>
 
