@@ -374,10 +374,6 @@ export default function ProfileView() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#090d15]/90 via-transparent to-[#090d15]/40 pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#090d15]/50 via-transparent to-[#090d15]/50 pointer-events-none" />
 
-              {/* Animated Futuristic Hologram Laser Scanline */}
-              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-40 animate-pulse pointer-events-none shadow-[0_0_12px_#00f0ff]" 
-                   style={{ top: `${(pulseTick * 2) % 100}%` }} />
-
               {/* Holographic Hotspot Markers & Tooltips */}
               {showHudOverlays && districts.map((district) => {
                 const isSelected = activeDistrict === district.id;
