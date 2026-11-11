@@ -19,7 +19,13 @@ import {
   Sliders, 
   Database,
   ArrowUpRight,
-  Maximize2
+  Eye,
+  EyeOff,
+  Maximize2,
+  Scan,
+  Fan,
+  Wifi,
+  Sparkles
 } from 'lucide-react';
 import { useRog } from '../../context/RogContext';
 import RogSlashes from '../common/RogSlashes';
@@ -39,8 +45,9 @@ export default function ProfileView() {
 
   const isLight = theme === 'light';
 
-  // Active highlighted isometric node: 'all' | 'reactor' | 'charging' | 'storage' | 'grid' | 'compute'
-  const [activeNode, setActiveNode] = useState('compute');
+  // Active highlighted district: 'all' | 'cpu' | 'gpu' | 'zephyrus' | 'cooling' | 'dimm' | 'radar'
+  const [activeDistrict, setActiveDistrict] = useState('all');
+  const [showHudOverlays, setShowHudOverlays] = useState(true);
   const [pulseTick, setPulseTick] = useState(0);
 
   // Periodic simulated micro-variations for live charts & gauges
@@ -53,6 +60,105 @@ export default function ProfileView() {
 
   const totalHours = games.reduce((acc, g) => acc + (parseFloat(g.hoursPlayed) || 0), 0).toFixed(0);
   const completedCount = games.filter(g => g.status === 'Completed').length;
+
+  const districts = [
+    {
+      id: 'cpu',
+      name: 'ROG Neural Core',
+      subtitle: 'Central Processor Nexus',
+      icon: Cpu,
+      color: '#00e5a3',
+      badge: 'i9-13980HX',
+      top: '46%',
+      left: '48%',
+      details: {
+        spec: 'Intel Core i9-13980HX (24 Cores / 32 Threads)',
+        metric1: `${telemetry.cpuClock || 4792} MHz Boost`,
+        metric2: `${telemetry.cpuTemp || 62}°C Liquid Metal`,
+        status: '100% Health // Zero Throttling'
+      }
+    },
+    {
+      id: 'gpu',
+      name: 'GPU Generator Substation',
+      subtitle: 'Discrete Graphics Array',
+      icon: Zap,
+      color: '#00f0ff',
+      badge: 'RTX 4080',
+      top: '80%',
+      left: '49%',
+      details: {
+        spec: 'NVIDIA GeForce RTX 4080 Laptop GPU @ 12GB GDDR6',
+        metric1: '175W Peak TGP (Dynamic Boost)',
+        metric2: '7424 CUDA Cores // DLSS 3.5',
+        status: '240Hz G-SYNC Ultra Synchronization'
+      }
+    },
+    {
+      id: 'zephyrus',
+      name: 'Zephyrus Cyber Sector',
+      subtitle: 'Vapor Chamber Heatsink',
+      icon: ShieldCheck,
+      color: '#38bdf8',
+      badge: '0dB CHASSIS',
+      top: '56%',
+      left: '26%',
+      details: {
+        spec: 'Extended Vapor Chamber Thermal Dissipation',
+        metric1: '0dB Ambient Whisper Acoustics',
+        metric2: 'Full Motherboard Component Coverage',
+        status: 'Active Passive/Dynamic Cooling'
+      }
+    },
+    {
+      id: 'cooling',
+      name: 'Cool Pipe Radiator',
+      subtitle: 'Dual Arc Flow Fans',
+      icon: Fan,
+      color: '#10b981',
+      badge: '84 BLADES',
+      top: '23%',
+      left: '64%',
+      details: {
+        spec: 'Dual 84-Blade Arc Flow Fans & Heatpipes',
+        metric1: `${telemetry.fanCpuRpm || 3800} RPM Exhaust Flow`,
+        metric2: `${telemetry.fanDba || '32.4'} dBA Pressure Level`,
+        status: 'Anti-Dust Self-Cleaning Tunnels Active'
+      }
+    },
+    {
+      id: 'dimm',
+      name: 'DIMM Memory Grid',
+      subtitle: 'High-Density RAM & Capacitors',
+      icon: Database,
+      color: '#a855f7',
+      badge: '32GB DDR5',
+      top: '64%',
+      left: '68%',
+      details: {
+        spec: '32.0 GB DDR5-4800 MHz (2 x 16GB Dual Channel)',
+        metric1: '4800 MT/s Low Latency Bus',
+        metric2: 'Solid Polymer Capacitor Array',
+        status: 'Quad-Channel Sub-channel Bandwidth'
+      }
+    },
+    {
+      id: 'radar',
+      name: 'Aura Radar Uplink',
+      subtitle: 'Omnidirectional RF Transceiver',
+      icon: Radio,
+      color: '#00e5a3',
+      badge: 'WI-FI 6E',
+      top: '11%',
+      left: '42%',
+      details: {
+        spec: 'Tri-Band Wi-Fi 6E (802.11ax) + Bluetooth 5.3',
+        metric1: '2.4GHz Ultra-Low Latency RF Link',
+        metric2: 'Aura Sync Spectrum Controller',
+        status: 'Deep Space Satellite Telemetry Online'
+      }
+    }
+  ];
 
   return (
     <div className="p-3 sm:p-5 max-w-[1720px] mx-auto space-y-4 sm:space-y-5 select-none">
@@ -112,7 +218,7 @@ export default function ProfileView() {
         </div>
       </div>
 
-      {/* Top 5 Futuristic KPI Metric Badges (Exact replica of reference header row) */}
+      {/* Top 5 Futuristic KPI Metric Badges */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Metric 1: Total Power Output */}
         <div className={`p-3 sm:p-3.5 rounded-xl border flex items-center space-x-3 transition-all hover:border-[#00e5a3]/60 ${
@@ -210,312 +316,214 @@ export default function ProfileView() {
         </div>
       </div>
 
-      {/* Main Grid: Center 3D Digital Twin Isometric Infrastructure + Right Side Analytics */}
+      {/* Main Section: 3D ROG Motherboard Cyber-City + Right Analytics */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-        {/* Left/Center 8 Columns: 3D Isometric Energy & Computing Infrastructure */}
+        {/* Left/Center 8 Columns: Photorealistic 3D ROG Motherboard Cyber-City with Interactive Hotspots */}
         <div className={`lg:col-span-8 rounded-2xl border p-4 sm:p-5 flex flex-col justify-between relative overflow-hidden transition-all ${
           isLight 
             ? 'bg-white border-slate-200 shadow-md' 
             : 'bg-gradient-to-b from-[#0e131d] via-[#101624] to-[#0c101a] border-[#1d273a] shadow-[0_0_40px_rgba(0,0,0,0.7)]'
         }`}>
-          {/* Subtle Cyber Grid Background */}
-          <div className="absolute inset-0 bg-[radial-gradient(#00f0ff_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
-
-          {/* Subheader Title */}
+          {/* Top Title & Interactive Controls */}
           <div className="relative z-10 flex items-center justify-between pb-3 border-b border-[#1b2538]">
             <div className="flex items-center space-x-2">
               <div className="w-2.5 h-2.5 rounded-full bg-[#00f0ff] shadow-[0_0_8px_#00f0ff]" />
               <h2 className="text-sm font-bold font-sans tracking-widest uppercase text-white flex items-center gap-2">
                 <span className={isLight ? 'text-gray-900' : 'text-white'}>ISOMETRIC DIGITAL TWIN INFRASTRUCTURE MATRIX</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#00f0ff]/10 text-[#00f0ff] border border-[#00f0ff]/30 hidden sm:inline">
-                  3D TELEMETRY TWIN
+                  3D ROG MOTHERBOARD CITY
                 </span>
               </h2>
             </div>
             
-            <div className="flex items-center space-x-2 text-[11px] font-mono text-gray-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-              <span className="text-emerald-400 font-bold">ONLINE (52% REACTOR)</span>
+            <div className="flex items-center space-x-3 text-[11px] font-mono">
+              <button
+                onClick={() => {
+                  playUiClick();
+                  setShowHudOverlays(!showHudOverlays);
+                }}
+                className={`px-2 py-1 rounded flex items-center space-x-1.5 border transition-colors ${
+                  showHudOverlays 
+                    ? 'bg-[#00f0ff]/15 border-[#00f0ff]/40 text-[#00f0ff]' 
+                    : 'bg-[#141b2a] border-[#1e2a3e] text-gray-400 hover:text-white'
+                }`}
+                title="Toggle Holographic HUD Markers"
+              >
+                {showHudOverlays ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+                <span className="hidden sm:inline">HUD {showHudOverlays ? 'ACTIVE' : 'MUTED'}</span>
+              </button>
+
+              <div className="flex items-center space-x-1.5 text-emerald-400 font-bold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+                <span>ONLINE (52% REACTOR)</span>
+              </div>
             </div>
           </div>
 
-          {/* Isometric SVG Canvas Visualization */}
-          <div className="relative z-10 my-4 w-full h-[320px] sm:h-[400px] flex items-center justify-center">
-            <svg 
-              viewBox="0 0 900 500" 
-              className="w-full h-full max-h-[420px] drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                {/* Glow Filters */}
-                <filter id="neonGlowCyan" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="5" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-                <filter id="neonGlowTurquoise" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="8" result="blur" />
-                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                </filter>
-                <linearGradient id="traceGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00e5a3" />
-                  <stop offset="50%" stopColor="#00f0ff" />
-                  <stop offset="100%" stopColor="#38bdf8" />
-                </linearGradient>
-                <linearGradient id="plantGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#00f0ff" />
-                  <stop offset="100%" stopColor="#00e5a3" />
-                </linearGradient>
-              </defs>
-
-              {/* 3D Isometric Base Ground Grid */}
-              <g opacity="0.3" stroke="#1d2a3d" strokeWidth="1">
-                {/* Isometric diamond lines */}
-                {Array.from({ length: 9 }).map((_, i) => (
-                  <line 
-                    key={`iso-diag-1-${i}`}
-                    x1={100 + i * 80} y1="360"
-                    x2={450 + i * 40} y2="120" 
-                  />
-                ))}
-                {Array.from({ length: 9 }).map((_, i) => (
-                  <line 
-                    key={`iso-diag-2-${i}`}
-                    x1={800 - i * 80} y1="360" 
-                    x2={450 - i * 40} y2="120" 
-                  />
-                ))}
-              </g>
-
-              {/* Glowing Circuit Bus Traces from Central Reactor */}
-              {/* Branch 1: Reactor to Charging Station (Left) */}
-              <path 
-                d="M 230 160 L 230 220 L 290 260 L 250 280" 
-                stroke="url(#traceGradCyan)" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeDasharray="6,4"
-                className="animate-pulse"
-              />
-              {/* Branch 2: Reactor to Storage Cluster (Center-Top) */}
-              <path 
-                d="M 250 150 L 360 150 L 400 200" 
-                stroke="url(#traceGradCyan)" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeDasharray="6,4"
-              />
-              {/* Branch 3: Storage to Transmission Towers (Right) */}
-              <path 
-                d="M 440 210 L 530 210 L 580 230" 
-                stroke="url(#traceGradCyan)" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeDasharray="6,4"
-              />
-              {/* Branch 4: Storage to Main Silicon Transformer Plant (Bottom-Center) */}
-              <path 
-                d="M 390 230 L 390 270 L 430 300" 
-                stroke="#00e5a3" 
-                strokeWidth="4" 
-                fill="none" 
-                filter="url(#neonGlowCyan)"
+          {/* Central 3D Cyber Motherboard City Canvas with Holographic HUD Hotspots */}
+          <div className="relative z-10 my-3 w-full rounded-xl overflow-hidden border border-[#1e2a3d] bg-[#090d15] shadow-[0_0_50px_rgba(0,0,0,0.9)] group">
+            {/* The 3D ROG Motherboard Cyber-City Image */}
+            <div className="relative w-full aspect-[16/9] sm:aspect-[1024/568] overflow-hidden">
+              <img 
+                src="./assets/rog-cyber-city.jpg" 
+                alt="ROG Motherboard Cyber City 3D Digital Twin" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] filter brightness-95 group-hover:brightness-100"
               />
 
-              {/* ======================================================== */}
-              {/* NODE 1: CENTRAL CIRCULAR REACTOR CORE (Top-Left)         */}
-              {/* ======================================================== */}
-              <g 
-                className="cursor-pointer transition-transform hover:scale-105"
-                onClick={() => { playUiClick(); setActiveNode('reactor'); }}
-              >
-                {/* Outer animated pulse rings */}
-                <ellipse cx="230" cy="150" rx="38" ry="24" fill="none" stroke="#00e5a3" strokeWidth="1.5" opacity="0.4" />
-                <ellipse cx="230" cy="150" rx="32" ry="20" fill="none" stroke="#00f0ff" strokeWidth="2" opacity="0.7" filter="url(#neonGlowCyan)" />
-                {/* Reactor Core Cylinder */}
-                <ellipse cx="230" cy="146" rx="26" ry="16" fill="#0c1724" stroke="#00f0ff" strokeWidth="2.5" />
-                <ellipse cx="230" cy="142" rx="22" ry="13" fill="#00f0ff" opacity="0.85" filter="url(#neonGlowTurquoise)" />
-                <path d="M 230 132 L 235 141 L 228 143 L 232 153 L 223 144 L 229 142 Z" fill="#ffffff" />
+              {/* Edge Vignette & Cyber Blue Atmosphere Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#090d15]/90 via-transparent to-[#090d15]/40 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#090d15]/50 via-transparent to-[#090d15]/50 pointer-events-none" />
 
-                {/* 52% Pulse Tag */}
-                <rect x="180" y="110" width="38" height="20" rx="4" fill="#09101a" stroke="#00f0ff" strokeWidth="1" />
-                <text x="199" y="124" fill="#00f0ff" fontSize="10" fontFamily="monospace" fontWeight="bold" textAnchor="middle">52%</text>
-              </g>
+              {/* Animated Futuristic Hologram Laser Scanline */}
+              <div className="absolute inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent opacity-40 animate-pulse pointer-events-none shadow-[0_0_12px_#00f0ff]" 
+                   style={{ top: `${(pulseTick * 2) % 100}%` }} />
 
-              {/* ======================================================== */}
-              {/* NODE 2: CHARGING BAYS / VRM POWER STAGE (Left Bay)       */}
-              {/* ======================================================== */}
-              <g 
-                className="cursor-pointer transition-transform hover:scale-105"
-                onClick={() => { playUiClick(); setActiveNode('charging'); }}
-              >
-                {/* Ground Platform */}
-                <polygon points="180,260 280,260 310,300 210,300" fill="#131a28" stroke={activeNode === 'charging' ? "#00f0ff" : "#1f2d42"} strokeWidth="1.5" />
-                
-                {/* 4 Isometric Charging Posts */}
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <g key={`chg-${i}`}>
-                    <polygon points={`${200 + i * 22},250 ${208 + i * 22},250 ${208 + i * 22},275 ${200 + i * 22},275`} fill="#1e293b" stroke="#334155" strokeWidth="0.5" />
-                    <circle cx={204 + i * 22} cy="254" r="1.5" fill="#00f0ff" />
-                  </g>
-                ))}
+              {/* Holographic Hotspot Markers & Tooltips */}
+              {showHudOverlays && districts.map((district) => {
+                const isSelected = activeDistrict === district.id;
+                const Icon = district.icon;
 
-                {/* Floating Tech Tooltip Card */}
-                <rect x="110" y="210" width="95" height="38" rx="4" fill="#090e18" stroke="#1f2d44" strokeWidth="1" opacity="0.95" />
-                <text x="118" y="224" fill="#94a3b8" fontSize="8" fontFamily="monospace">● VRM POWER</text>
-                <text x="118" y="235" fill="#00f0ff" fontSize="10" fontFamily="monospace" fontWeight="bold">175W // 980mV</text>
-                <text x="118" y="244" fill="#64748b" fontSize="7" fontFamily="monospace">MAX TGP BOOST</text>
-              </g>
-
-              {/* ======================================================== */}
-              {/* NODE 3: ENERGY STORAGE CLUSTER / SERVER RACKS (Center)  */}
-              {/* ======================================================== */}
-              <g 
-                className="cursor-pointer transition-transform hover:scale-105"
-                onClick={() => { playUiClick(); setActiveNode('storage'); }}
-              >
-                {/* Server Battery Bay Platform */}
-                <polygon points="350,180 440,180 470,225 380,225" fill="#141c2c" stroke={activeNode === 'storage' ? "#00f0ff" : "#202e47"} strokeWidth="1.5" />
-                
-                {/* 3 Rows of Server Battery Blocks */}
-                {Array.from({ length: 3 }).map((_, r) => (
-                  <g key={`rack-r-${r}`}>
-                    {Array.from({ length: 3 }).map((_, c) => (
-                      <polygon 
-                        key={`rack-${r}-${c}`}
-                        points={`${375 + c * 24 + r * 6},${185 + r * 10} ${390 + c * 24 + r * 6},${185 + r * 10} ${394 + c * 24 + r * 6},${193 + r * 10} ${379 + c * 24 + r * 6},${193 + r * 10}`}
-                        fill="#1e2a3e"
-                        stroke="#38bdf8"
-                        strokeWidth="0.8"
-                      />
-                    ))}
-                  </g>
-                ))}
-
-                {/* Floating Tech Tooltip Card */}
-                <rect x="370" y="135" width="105" height="38" rx="4" fill="#090e18" stroke="#1f2d44" strokeWidth="1" opacity="0.95" />
-                <text x="378" y="149" fill="#94a3b8" fontSize="8" fontFamily="monospace">● NVMe CLUSTER</text>
-                <text x="378" y="160" fill="#38bdf8" fontSize="10" fontFamily="monospace" fontWeight="bold">2TB // 7,100 MB/s</text>
-                <text x="378" y="169" fill="#64748b" fontSize="7" fontFamily="monospace">GEN4x4 ACTIVE</text>
-              </g>
-
-              {/* ======================================================== */}
-              {/* NODE 4: TRANSMISSION TOWERS / NEBULA DISPLAY (Right)     */}
-              {/* ======================================================== */}
-              <g 
-                className="cursor-pointer transition-transform hover:scale-105"
-                onClick={() => { playUiClick(); setActiveNode('grid'); }}
-              >
-                {/* Substation Ground */}
-                <polygon points="540,210 650,210 670,260 560,260" fill="#131b2a" stroke={activeNode === 'grid' ? "#00f0ff" : "#1e2c44"} strokeWidth="1.5" />
-                
-                {/* Isometric Lattice Pylon 1 */}
-                <line x1="570" y1="245" x2="570" y2="185" stroke="#475569" strokeWidth="2.5" />
-                <line x1="560" y1="205" x2="580" y2="205" stroke="#475569" strokeWidth="1.5" />
-                <line x1="563" y1="195" x2="577" y2="195" stroke="#475569" strokeWidth="1.5" />
-                <line x1="570" y1="185" x2="560" y2="245" stroke="#334155" strokeWidth="1" />
-                <line x1="570" y1="185" x2="580" y2="245" stroke="#334155" strokeWidth="1" />
-                
-                {/* Isometric Lattice Pylon 2 */}
-                <line x1="620" y1="240" x2="620" y2="180" stroke="#475569" strokeWidth="2.5" />
-                <line x1="610" y1="200" x2="630" y2="200" stroke="#475569" strokeWidth="1.5" />
-                <line x1="620" y1="180" x2="610" y2="240" stroke="#334155" strokeWidth="1" />
-                <line x1="620" y1="180" x2="630" y2="240" stroke="#334155" strokeWidth="1" />
-
-                {/* Power Lines connecting pylons */}
-                <path d="M 570 185 Q 595 192 620 180" stroke="#00f0ff" strokeWidth="1" fill="none" opacity="0.75" />
-
-                {/* Floating Tech Tooltip Card */}
-                <rect x="580" y="140" width="95" height="38" rx="4" fill="#090e18" stroke="#1f2d44" strokeWidth="1" opacity="0.95" />
-                <text x="588" y="154" fill="#94a3b8" fontSize="8" fontFamily="monospace">● NEBULA GRID</text>
-                <text x="588" y="165" fill="#00e5a3" fontSize="10" fontFamily="monospace" fontWeight="bold">240Hz G-SYNC</text>
-                <text x="588" y="174" fill="#64748b" fontSize="7" fontFamily="monospace">QHD+ 3ms 16:10</text>
-              </g>
-
-              {/* ======================================================== */}
-              {/* NODE 5: MAIN CORE PLANT (Exact Glowing Neon Box Match)  */}
-              {/* ======================================================== */}
-              <g 
-                className="cursor-pointer transition-transform hover:scale-105"
-                onClick={() => { playUiClick(); setActiveNode('compute'); }}
-              >
-                {/* Prominent Glowing Neon Turquoise Frame Base (Highlight of the photo!) */}
-                <polygon 
-                  points="390,265 520,265 550,335 420,335" 
-                  fill="#00e5a3" 
-                  fillOpacity="0.12" 
-                  stroke="#00e5a3" 
-                  strokeWidth="3.5" 
-                  filter="url(#neonGlowTurquoise)" 
-                />
-
-                {/* Raised Plant Block Foundation */}
-                <polygon points="410,275 500,275 525,320 435,320" fill="#132030" stroke="#00e5a3" strokeWidth="1.5" />
-
-                {/* Transformer Station Buildings / Heatsink Fin Array */}
-                {Array.from({ length: 4 }).map((_, i) => (
-                  <g key={`fin-${i}`}>
-                    <polygon 
-                      points={`${430 + i * 18},265 ${442 + i * 18},265 ${448 + i * 18},295 ${436 + i * 18},295`}
-                      fill="#1e2e42"
-                      stroke="#00e5a3"
-                      strokeWidth="1.2"
-                    />
-                    <polygon 
-                      points={`${442 + i * 18},265 ${448 + i * 18},265 ${448 + i * 18},295 ${442 + i * 18},295`}
-                      fill="#0d1b28"
-                    />
-                  </g>
-                ))}
-
-                {/* Main Core CPU / GPU Die on Top */}
-                <ellipse cx="468" cy="275" rx="14" ry="8" fill="#00f0ff" opacity="0.9" filter="url(#neonGlowCyan)" />
-
-                {/* Floating Tech Tooltip Card */}
-                <rect x="525" y="275" width="115" height="42" rx="4" fill="#090e18" stroke="#00e5a3" strokeWidth="1.5" opacity="0.95" />
-                <text x="533" y="290" fill="#00e5a3" fontSize="8" fontFamily="monospace" fontWeight="bold">● CORE PROCESSOR</text>
-                <text x="533" y="302" fill="#ffffff" fontSize="10" fontFamily="monospace" fontWeight="bold">i9-13980HX + RTX 4080</text>
-                <text x="533" y="312" fill="#64748b" fontSize="7" fontFamily="monospace">24 CORES // 7424 CUDA</text>
-              </g>
-            </svg>
-          </div>
-
-          {/* Interactive Node Selector Pills below the 3D Map */}
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#1b2538]">
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              {[
-                { id: 'compute', label: 'Main Compute Core', icon: Cpu, color: 'text-emerald-400' },
-                { id: 'charging', label: 'VRM Power Stage', icon: BatteryCharging, color: 'text-cyan-400' },
-                { id: 'storage', label: 'NVMe Cluster', icon: Database, color: 'text-sky-400' },
-                { id: 'grid', label: 'Nebula Display Grid', icon: Radio, color: 'text-teal-400' },
-                { id: 'reactor', label: 'Central Reactor', icon: Zap, color: 'text-amber-400' }
-              ].map((btn) => {
-                const isSelected = activeNode === btn.id;
-                const Icon = btn.icon;
                 return (
-                  <button
-                    key={btn.id}
+                  <div
+                    key={district.id}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group/marker"
+                    style={{ top: district.top, left: district.left }}
                     onClick={() => {
                       playUiClick();
-                      setActiveNode(btn.id);
+                      setActiveDistrict(activeDistrict === district.id ? 'all' : district.id);
+                    }}
+                  >
+                    {/* Pulsing Beacon Ring */}
+                    <div className="relative flex items-center justify-center">
+                      <span 
+                        className="absolute w-8 h-8 rounded-full animate-ping opacity-60"
+                        style={{ backgroundColor: district.color }}
+                      />
+                      <span 
+                        className={`w-6 h-6 rounded-lg flex items-center justify-center border shadow-lg transition-transform duration-300 ${
+                          isSelected ? 'scale-125 ring-2 ring-white' : 'hover:scale-110'
+                        }`}
+                        style={{ 
+                          backgroundColor: '#0c121e', 
+                          borderColor: district.color,
+                          boxShadow: `0 0 15px ${district.color}`
+                        }}
+                      >
+                        <Icon className="w-3.5 h-3.5" style={{ color: district.color }} />
+                      </span>
+                    </div>
+
+                    {/* Holographic Callout HUD Tooltip Card */}
+                    <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 sm:w-64 p-2.5 rounded-lg border backdrop-blur-md shadow-2xl transition-all duration-300 pointer-events-none font-mono ${
+                      isSelected 
+                        ? 'opacity-100 scale-100' 
+                        : 'opacity-0 scale-95 group-hover/marker:opacity-100 group-hover/marker:scale-100'
+                    }`}
+                    style={{
+                      backgroundColor: 'rgba(9, 14, 24, 0.95)',
+                      borderColor: district.color,
+                      boxShadow: `0 0 20px rgba(0, 240, 255, 0.35)`
+                    }}>
+                      <div className="flex items-center justify-between border-b pb-1.5 mb-1.5" style={{ borderColor: 'rgba(255,255,255,0.1)' }}>
+                        <div className="flex items-center space-x-1.5">
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: district.color }} />
+                          <span className="text-[11px] font-bold uppercase text-white truncate">{district.name}</span>
+                        </div>
+                        <span className="text-[9px] px-1.5 py-0.5 rounded font-bold" style={{ backgroundColor: `${district.color}25`, color: district.color }}>
+                          {district.badge}
+                        </span>
+                      </div>
+                      <div className="space-y-1 text-[10px]">
+                        <div className="text-gray-300 font-medium truncate">{district.details.spec}</div>
+                        <div className="flex items-center justify-between text-gray-400">
+                          <span className="text-white font-bold">{district.details.metric1}</span>
+                          <span style={{ color: district.color }}>{district.details.metric2}</span>
+                        </div>
+                        <div className="text-[9px] text-emerald-400 pt-0.5 flex items-center gap-1">
+                          <CheckCircle2 className="w-2.5 h-2.5" />
+                          <span>{district.details.status}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Overlay Status Bar within the 3D City */}
+            <div className="px-3 py-2 bg-[#0a0f1a]/95 border-t border-[#1a2538] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+              <div className="flex items-center space-x-3 text-gray-300">
+                <span className="flex items-center gap-1.5 text-[#00f0ff]">
+                  <Scan className="w-3.5 h-3.5" />
+                  <span>3D MOTHERBOARD VISUALIZER</span>
+                </span>
+                <span className="hidden sm:inline text-gray-500">•</span>
+                <span className="hidden sm:inline text-gray-400">240 FPS REAL-TIME TWIN</span>
+              </div>
+
+              <div className="flex items-center space-x-2 text-[11px]">
+                <span className="text-gray-400">FOCUS:</span>
+                <span className="font-bold text-[#00e5a3] uppercase">
+                  {activeDistrict === 'all' ? 'All Sectors Active' : districts.find(d => d.id === activeDistrict)?.name}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive District Selector Buttons below the 3D City */}
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#1b2538]">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <button
+                onClick={() => {
+                  playUiClick();
+                  setActiveDistrict('all');
+                }}
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center space-x-1.5 transition-all ${
+                  activeDistrict === 'all'
+                    ? 'bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/60 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
+                    : (isLight 
+                        ? 'bg-slate-100 text-gray-700 hover:bg-slate-200 border border-slate-200' 
+                        : 'bg-[#141b2a] text-gray-400 hover:text-white border border-[#1e2a3e]')
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#00f0ff]" />
+                <span>All Sectors</span>
+              </button>
+
+              {districts.map((d) => {
+                const isSelected = activeDistrict === d.id;
+                const Icon = d.icon;
+                return (
+                  <button
+                    key={d.id}
+                    onClick={() => {
+                      playUiClick();
+                      setActiveDistrict(d.id);
                     }}
                     className={`px-2.5 py-1.5 rounded-lg text-xs font-mono font-medium flex items-center space-x-1.5 transition-all ${
                       isSelected
-                        ? 'bg-[#00f0ff]/20 text-[#00f0ff] border border-[#00f0ff]/60 shadow-[0_0_12px_rgba(0,240,255,0.3)]'
+                        ? 'border shadow-md'
                         : (isLight 
                             ? 'bg-slate-100 text-gray-700 hover:bg-slate-200 border border-slate-200' 
                             : 'bg-[#141b2a] text-gray-400 hover:text-white border border-[#1e2a3e]')
                     }`}
+                    style={isSelected ? {
+                      backgroundColor: `${d.color}25`,
+                      color: d.color,
+                      borderColor: d.color,
+                      boxShadow: `0 0 12px ${d.color}40`
+                    } : {}}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${btn.color}`} />
-                    <span>{btn.label}</span>
+                    <Icon className="w-3.5 h-3.5" style={{ color: d.color }} />
+                    <span>{d.name.split(' ')[0]}</span>
                   </button>
                 );
               })}
             </div>
 
             <span className="text-[11px] font-mono text-gray-400 flex items-center gap-1">
-              <span>STATUS:</span>
-              <strong className="text-emerald-400 font-bold">SYNCHRONIZED</strong>
+              <span>TWIN MATRIX:</span>
+              <strong className="text-emerald-400 font-bold">CALIBRATED</strong>
             </span>
           </div>
         </div>
@@ -695,7 +703,7 @@ export default function ProfileView() {
         </div>
       </div>
 
-      {/* Bottom Row: 3 Telemetry & Waveform Graph Visualizers (Exact match to bottom strip of photo) */}
+      {/* Bottom Row: 3 Telemetry & Waveform Graph Visualizers */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
         {/* Widget 1: Station Envelopes & Counters (Left 3 cols) */}
         <div className={`md:col-span-3 p-4 rounded-2xl border transition-all ${
@@ -760,7 +768,7 @@ export default function ProfileView() {
           <div className="w-full h-32 relative">
             <svg viewBox="0 0 300 120" className="w-full h-full overflow-visible">
               <defs>
-                <linearGradient id="waveFillGrad" x1="0" y1="0" x2="0" y2="1">
+                <linearGradient id="waveFillGrad" x1="0%" y1="0%" x2="0%" y2="1">
                   <stop offset="0%" stopColor="#f59e0b" stopOpacity="0.4" />
                   <stop offset="100%" stopColor="#00f0ff" stopOpacity="0.0" />
                 </linearGradient>
